@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="Dashboard" />
+<meta name="keyword"
+	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina" />
+<!-- <meta charset="ISO-8859-1"/> -->
+<!--   	<meta charset="utf-8"/>
+ -->
+
+<title>Form Management Application</title>
+
+<!-- Favicons -->
+<!--  <link href="/img/favicon.png" rel="icon"/>
+  <link href="/img/apple-touch-icon.png" rel="apple-touch-icon"/>  -->
+
+<link href="/img/favicon.png" rel="icon" />
+<link href="/img/apple-touch-icon.png" rel="apple-touch-icon" />
+<!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/> -->
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Bootstrap core CSS -->
+<!--  <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/> -->
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<!--external css-->
+<!--  <script th:src="@{../js/angular.js}"></script>  -->
+
+<script src="/js/angular.js"></script>
+<!-- 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.4.5/angular-route.js"></script> -->
+<!--  <script th:src="@{../js/UserMenu.js}"></script> 
+  
+  <link href="/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="/css/zabuto_calendar.css"/>
+  <link rel="stylesheet" type="text/css" href="/lib/gritter/css/jquery.gritter.css" />
+
+  <link href="/css/style.css" rel="stylesheet"/>
+  <link href="/css/style-responsive.css" rel="stylesheet"/>
+  <script src="/lib/chart-master/Chart.js"></script> -->
+
+
+<!-- <script th:src="@{../js/UserMenuTest.js}"></script> -->
+<script src="/js/UserMenu.js"></script>
+<link href="/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/css/zabuto_calendar.css" />
+<link rel="stylesheet" type="text/css"
+	href="/lib/gritter/css/jquery.gritter.css" />
+<link href="/css/style.css" rel="stylesheet" />
+<link href="/css/style-responsive.css" rel="stylesheet" />
+<script src="/lib/chart-master/Chart.js"></script>
+-
+
+
+</head>
+
+
+<body ng-app="myapp" ng-controller="UserController">
+	<section id="container">
+		<!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+		<!--header start-->
+		<header class="header black-bg">
+			<div class="sidebar-toggle-box">
+				<div class="fa fa-bars tooltips" data-placement="right"
+					data-original-title="Toggle Navigation"></div>
+			</div>
+			<!--logo start-->
+			<a href="/user/home" class="logo"><b>Form<span>App</span></b></a>
+			<!--logo end-->
+			<div class="nav notify-row" id="top_menu">
+				<!--  notification start -->
+
+				<!--  notification end -->
+			</div>
+			<div class="top-menu">
+				<ul class="nav pull-right top-menu">
+					<li><a th:href="@{/logout}" class="logout">Logout</a></li>
+				</ul>
+			</div>
+		</header>
+		<!--header end-->
+		<!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+		<!--sidebar start-->
+		<aside>
+			<div id="sidebar" class="nav-collapse ">
+				<!-- sidebar menu start-->
+				<ul class="sidebar-menu" id="nav-accordion">
+					<!--  <p class="centered"><a href="profile.html"><img src="img/ui-sam.jpg" class="img-circle" width="80"/></a></p>
+          <h5 class="centered">Sam Soffes</h5> -->
+					<!--  <li class="mt ng-scope"><a href="/user/mfile.html"><span>Generación de Arhivo "m"</span></a></li> -->
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Generación
+								de Arhivo "m"</span></a></li>
+					<li class="mt ng-scope"><a href="/user/pedimento.html"><span>Pediment Normal</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Desistimiento o Eliminación</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>De la Industria Automotriz</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Pedimento Complementario</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Previo de Consolidado</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Global Complementario</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Tránsitos</span></a></li>
+					
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Despacho Anticipado</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Rectificaciones</span></a></li>
+						
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Confirmación de Pago</span></a></li>
+						
+						
+						
+						
+				</ul>
+				<!-- sidebar menu end-->
+			</div>
+		</aside>
+		<!--sidebar end-->
+		<!-- ****************************************************	******************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+		<!--main content start-->
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row mt">
+					<!-- <div class="col-lg-12" ng-show="one">
+            <h4><i class="fa fa-angle-right"></i>{{currentForm.name}}</h4>
+            <div class="form-panel">
+              <form role="form" class="form-horizontal">
+               <div class="form-group" id="userform">
+                 
+                 
+                </div>
+                </form>
+              </div>
+             </div> -->
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="one">
+
+						<div class="panel-group" id="accordion">
+							<div id="userform">
+								<ul class="nav nav-tabs ng-scope">
+									<li ><a 
+										href="/user/pedimento.html">Generales</a></li>
+									<li></li>
+									<li class="active"><a data-toggle="tab" href="/user/partidas.html">Partidas</a></li>
+									<li></li>
+									<li class=""><a 
+										href="/user/contribuciones">Contribuciones</a></li>
+									<li></li>
+								</ul>
+								<div class="tab-content ng-scope">
+
+									<div id="tab2" class="tab-pane fade  in active">
+
+										<div>
+											
+											
+											<form novalidate="" id="form28" name="form28" class="ng-pristine ng-valid-pattern ng-valid-maxlength ng-invalid ng-invalid-required">
+   <h2></h2>
+   <br></br>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">CLAVE DEL TIPO DE REGISTRO</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-valid ng-valid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata28.clave_del_Tipo_de_Registro" ng-disabled="true" ng-init="formdata28.clave_del_Tipo_de_Registro=551" name="clave_del_Tipo_de_Registro" type="number" id="clave_del_Tipo_de_Registro" value="551" required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="3" maxlength="3" disabled="disabled" /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form28.clave_del_Tipo_de_Registro.$error.required">This Field is Required*</div>
+         <br></br>
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form28.clave_del_Tipo_de_Registro.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br> 
+   
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">NÚMERO DE PEDIMENTO</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata28.número_de_pedimento" ng-disabled="false" name="número_de_pedimento" type="number" id="número_de_pedimento" value="" required="" ng-pattern="/^[9]{1}[0-9]{6}?$/" limit-to="7" maxlength="7" data-tooltip-append-to-body="true" data-tooltip="El primer dígito debe corresponder al último dígito del año en curso, mientras que los seis dígitos restantes son un número único de control asignado por el agente aduanal,apoderado aduanal o mandatario conservando los CEROS a la izquierda para que en conjunto sean siempre 7 dígitos. " /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6" style="color:red" ng-show="form28.número_de_pedimento.$error.required">This Field is Required*</div>
+         <br></br>
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form28.número_de_pedimento.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+   
+   
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">FRACCIÓN ARANCELARIA</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata28.fracción_Arancelaria" ng-disabled="false" type="text" id="fracción_Arancelaria" limit-to="8" name="fracción_Arancelaria" maxlength="8" value="" /></div>
+      <div class="form-group">
+         <div class="col-sm-6"><input name="clave_formulario_principal" type="hidden" id="clave_formulario_principal" ng-model="formdata28.clave_formulario_principal" class="ng-pristine ng-untouched ng-valid" /></div>
+      </div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div style="color:red" ng-show="form28.fracción_Arancelaria.$error.required">This Field is Required*</div>
+         <br></br>
+         <div style="color:red" ng-show="form28.fracción_Arancelaria.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+      </div>
+   </div>
+   <br></br>
+   
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">NÚMERO PARTIDA</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata28.número_Partida" ng-disabled="false" name="número_Partida" type="number" id="número_Partida" value="" required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="5" maxlength="5" /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6" style="color:red" ng-show="form28.número_Partida.$error.required">This Field is Required*</div>
+         <br></br>
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form28.número_Partida.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">SUBDIVISION FRACCIÓN</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata28.subdivision_Fracción" ng-disabled="false" type="text" id="subdivision_Fracción" limit-to="8" name="subdivision_Fracción" maxlength="8" value="" /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div style="color:red" ng-show="form28.subdivision_Fracción.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+      </div>
+   </div>
+   <br></br>
+   
+     <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">DESCRIPCION MERCANCÍA</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata28.descripcion_Mercancía" ng-disabled="false" type="text" id="descripcion_Mercancía" limit-to="250" name="descripcion_Mercancía" maxlength="250" value="" /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div style="color:red" ng-show="form28.descripcion_Mercancía.$error.required">This Field is Required*</div>
+         <br></br>
+         <div style="color:red" ng-show="form28.descripcion_Mercancía.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">PRECIO UNITARIO</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata28.precio_Unitario" ng-disabled="false" name="precio_Unitario" type="number" id="precio_Unitario" value="" required="" ng-pattern="/^\d{0,10}(\.\d{1,5})?$/" limit-to="16" maxlength="16" placeholder="El campo contiene hasta 10 enteros y hasta  5 fracciones." /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form28.precio_Unitario.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">VALOR ADUANA</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata28.valor_Aduana" ng-disabled="false" name="valor_Aduana" type="number" id="valor_Aduana" value="" required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="12" maxlength="12" /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6" style="color:red" ng-show="form28.valor_Aduana.$error.required">This Field is Required*</div>
+         <br></br>
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form28.valor_Aduana.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+   
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">IMPORTE PRECIO PAGADO</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata28.importe_precio_pagado" ng-disabled="false" type="text" id="importe_precio_pagado" limit-to="12" name="importe_precio_pagado" maxlength="12" value="" /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div style="color:red" ng-show="form28.importe_precio_pagado.$error.required">This Field is Required*</div>
+         <br></br> 
+         <div style="color:red" ng-show="form28.importe_precio_pagado.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+      </div>
+   </div>
+   <br>
+   </br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">VALOR DÓLARES</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata28.valor_Dólares" ng-disabled="false" name="valor_Dólares" type="number" id="valor_Dólares" value="" required="" ng-pattern="/^\d{0,12}(\.\d{1,2})?$/" limit-to="15" maxlength="15" placeholder="El campo contiene hasta 12 enteros y hasta  2 fracciones." /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6" style="color:red" ng-show="form28.valor_Dólares.$error.required">This Field is Required*</div>
+         <br></br>
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form28.valor_Dólares.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+     <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">CANTIDAD MERCANCÍA UNIDADES</label>
+      <div class="col-sm-6">
+         <select id="second-choice" ng-model="formdata28.cantidad_mercancía_Unidades" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+            <option value="? undefined:undefined ?"></option>
+            <option value="1">1</option></select> </div>
+      <div class="col-sm-offset-8 col-sm-4"></div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">UNIDAD MEDIDA COMERCIALIZACIÓN</label>
+      <div class="col-sm-6">
+         <select id="second-choice" ng-model="formdata28.unidad_Medida_Comercialización" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+            <option value="? undefined:undefined ?"></option>
+            <option value="1">1</option>
+            <option value="2">2</option></select>
+             </div>
+      <div class="col-sm-offset-8 col-sm-4"></div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">CANTIDAD MERCANCÍA UNIDADES LIGIE</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata28.cantidad_mercancía_Unidades_LIGIE" ng-disabled="false" name="cantidad_mercancía_Unidades_LIGIE" type="number" id="cantidad_mercancía_Unidades_LIGIE" value="" required="" ng-pattern="/^\d{0,13}(\.\d{1,5})?$/" limit-to="19" maxlength="19" placeholder="El campo contiene hasta 13 enteros y hasta  5 fracciones." /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6" style="color:red" ng-show="form28.cantidad_mercancía_Unidades_LIGIE.$error.required">This Field is Required*</div>
+         <br></br>
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form28.cantidad_mercancía_Unidades_LIGIE.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">UNIDAD MEDIDA LIGIE</label>
+      <div class="col-sm-6">
+         <select id="second-choice" ng-model="formdata28.unidad_Medida_LIGIE" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+            <option value="? undefined:undefined ?"></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+        </select></div>
+      <div class="col-sm-offset-8 col-sm-4"></div>
+   </div>
+   <br></br>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">VALOR AGREGADO</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata28.valor_Agregado" ng-disabled="false" name="valor_Agregado" type="number" id="valor_Agregado" value="" required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="12" maxlength="12" /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6" style="color:red" ng-show="form28.valor_Agregado.$error.required">This Field is Required*</div>
+         <br></br>
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form28.valor_Agregado.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br>
+   </br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">VINCULACIÓN</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata28.vinculación" ng-disabled="false" type="text" id="vinculación" limit-to="1" name="vinculación" maxlength="1" value="" /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div style="color:red" ng-show="form28.vinculación.$error.required">This Field is Required*</div>
+         <br></br>
+         <div style="color:red" ng-show="form28.vinculación.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+      </div>
+   </div>
+   <br>
+   </br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">CÓDIGO PRODUCTO</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata28.código_producto" ng-disabled="false" type="text" id="código_producto" limit-to="20" name="código_producto" maxlength="20" value="" /></div>
+      <div class="col-sm-offset-8 col-sm-4"></div>
+   </div>
+   <br></br>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">MÉTODO VALORACIÓN</label>
+      <div class="col-sm-6">
+         <select id="second-choice" ng-model="formdata28.método_Valoración" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+            <option value="? undefined:undefined ?"></option>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+         </select>
+      </div>
+      <div class="col-sm-offset-8 col-sm-4"></div>
+   </div>
+   <br></br>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">MARCA MERCANCÍA</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata28.marca_mercancía" ng-disabled="false" type="text" id="marca_mercancía" limit-to="80" name="marca_mercancía" maxlength="80" value="" /></div>
+      <div class="col-sm-offset-8 col-sm-4"></div>
+   </div>
+   <br></br>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">MODELO LOTE MERCANCÍA</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata28.modelo_Lote_mercancía" ng-disabled="false" type="text" id="modelo_Lote_mercancía" limit-to="80" name="modelo_Lote_mercancía" maxlength="80" value="" /></div>
+      <div class="col-sm-offset-8 col-sm-4"></div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">PAÍS ORIGEN DESTINO MERCANCÍA</label>
+      <div class="col-sm-6">
+         <select id="second-choice" ng-model="formdata28.país_Origen_Destino_mercancía" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+            <option value="? undefined:undefined ?"></option>
+            <option value="A1">A1</option>
+       </select>
+      </div>
+      <div class="col-sm-offset-8 col-sm-4"></div>
+   </div>
+   <br></br>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">PAÍS VENDEDOR COMPRADOR</label>
+      <div class="col-sm-6">
+         <select id="second-choice" ng-model="formdata28.país_Vendedor_Comprador" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+            <option value="? undefined:undefined ?"></option>
+            <option value="A1">A1</option>
+      </select> </div>
+      <div class="col-sm-offset-8 col-sm-4"></div>
+   </div>
+   <br></br>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">ENTIDAD FEDERATIVA ORIGEN MERCANCÍAS</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata28.entidad_Federativa_Origen_mercancías" ng-disabled="false" type="text" id="entidad_Federativa_Origen_mercancías" limit-to="3" name="entidad_Federativa_Origen_mercancías" maxlength="3" value="" /></div>
+      <div class="col-sm-offset-8 col-sm-4"></div>
+   </div>
+   <br></br>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">ENTIDAD FEDERATIVA DESTINO MERCANCÍAS</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata28.entidad_Federativa_Destino_mercancías" ng-disabled="false" type="text" id="entidad_Federativa_Destino_mercancías" limit-to="3" name="entidad_Federativa_Destino_mercancías" maxlength="3" value="" /></div>
+      <div class="col-sm-offset-8 col-sm-4"></div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">ENTIDAD FEDERATIVA COMPRADOR MERCANCÍAS</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata28.entidad_Federativa_Comprador_mercancías" ng-disabled="false" type="text" id="entidad_Federativa_Comprador_mercancías" limit-to="3" name="entidad_Federativa_Comprador_mercancías" maxlength="3" value="" /></div>
+      <div class="col-sm-offset-8 col-sm-4"></div>
+   </div>
+   <br></br>
+    <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">ENTIDAD FEDERATIVA VENDEDOR MERCANCÍAS</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata28.entidad_Federativa_Vendedor_mercancías" ng-disabled="false" type="text" id="entidad_Federativa_Vendedor_mercancías" limit-to="3" name="entidad_Federativa_Vendedor_mercancías" maxlength="3" value="" /></div>
+      <div class="col-sm-offset-8 col-sm-4"></div>
+   </div>
+   <br></br>
+   <div class="form-group">
+													<div class="col-lg-offset-2 col-lg-10">
+														<button ng-disabled="isDisabled28 || form28.$invalid"
+															class="btn btn-theme"
+															ng-click="isDisabled28=true;isLock28=true;$event.preventDefault();save(formdata28,28,1)"
+															disabled="disabled">Guardar</button>
+														<button class="btn btn-theme buttonclass">
+															<a data-toggle="tab" href="/user/partidas.html"
+																aria-expanded="true" >Return back</a>
+														</button>
+													</div>
+												</div>
+   </form>
+   
+   
+												<!-- formgroup div end -->
+            
+            <br></br>
+											<div class="col-sm-12">
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab11" aria-expanded="true">DeterPagoContrNivelPartidaArtículos303TLCAN14Decisión15</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab23" aria-expanded="true">Mercancías</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab30" aria-expanded="true">Permisos</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab21" aria-expanded="true">IdentificadoresNivelPartida</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab37" aria-expanded="true">GarantíaNivelPartida</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab25" aria-expanded="true">ObservacionesNivelPartida</a>
+												</button>
+											</div>
+											
+										</div></div></div></div></div>
+
+
+				</div>
+
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="two">
+					<div class="panel-group" id="accordion">
+						<div id="peditableData"></div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12" ng-show="success"
+					ng-cloak="ng-cloak">
+					<!--  ALERTS EXAMPLES -->
+					<div class="showback">
+						<div class="alert alert-success">
+							<b> Felicidades!</b> Datos guardados exitosamente
+						</div>
+					</div>
+				</div>
+
+
+				</div>
+				<!-- /row -->
+			</section>
+		</section>
+
+	</section>
+	<!-- js placed at the end of the document so the pages load faster -->
+	<!--  <script src="/lib/jquery/jquery.min.js"></script>
+
+  <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="/lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="/lib/jquery.scrollTo.min.js"></script>
+  <script src="/lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="/lib/jquery.sparkline.js"></script>
+  <script src="/lib/common-scripts.js"></script>
+  <script type="text/javascript" src="/lib/gritter/js/jquery.gritter.js"></script>
+  <script type="text/javascript" src="/lib/gritter-conf.js"></script>
+
+  <script src="/lib/sparkline-chart.js"></script>
+  <script src="/lib/zabuto_calendar.js"></script>
+  <script src="https://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script> 
+  -->
+	<script
+		src="https://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+	<script src="/lib/jquery/jquery.min.js"></script>
+
+	<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+	<script class="include" type="text/javascript"
+		src="/lib/jquery.dcjqaccordion.2.7.js"></script>
+	<script src="/lib/jquery.scrollTo.min.js"></script>
+	<script src="/lib/jquery.nicescroll.js" type="text/javascript"></script>
+	<script src="/lib/jquery.sparkline.js"></script>
+
+	<script src="/lib/common-scripts.js"></script>
+	<script type="text/javascript" src="/lib/gritter/js/jquery.gritter.js"></script>
+	<script type="text/javascript" src="/lib/gritter-conf.js"></script>
+
+	<script src="/lib/sparkline-chart.js"></script>
+	<script src="/lib/zabuto_calendar.js"></script>
+	<script type="text/javascript">
+    $(document).ready(function() {
+      var unique_id = $.gritter.add({
+        // (string | mandatory) the heading of the notification
+        title: 'Welcome to Dashio!',
+        // (string | mandatory) the text inside the notification
+        text: '',
+        // (string | optional) the image to display on the left
+        image: 'img/ui-sam.jpg',
+        // (bool | optional) if you want it to fade out on its own or just sit there
+        sticky: false,
+        // (int | optional) the time you want it to be alive for before fading out
+        time: 8000,
+        // (string | optional) the class name you want to apply to that specific message
+        class_name: 'my-sticky-class'
+      });
+
+      return false;
+    });
+  </script>
+	<script type="application/javascript">
+    $(document).ready(function() {
+      $("#date-popover").popover({
+        html: true,
+        trigger: "manual"
+      });
+   /*    $('#tableId').DataTable();
+ */      $("#date-popover").hide();
+      $("#date-popover").click(function(e) {
+        $(this).hide();
+      });
+
+      $("#my-calendar").zabuto_calendar({
+        action: function() {
+          return myDateFunction(this.id, false);
+        },
+        action_nav: function() {
+          return myNavFunction(this.id);
+        },
+        ajax: {
+          url: "show_data.php?action=1",
+          modal: true
+        },
+        legend: [{
+            type: "text",
+            label: "Special event",
+            badge: "00"
+          },
+          {
+            type: "block",
+            label: "Regular event",
+          }
+        ]
+      });
+    });
+
+    function myNavFunction(id) {
+      $("#date-popover").hide();
+      var nav = $("#" + id).data("navigation");
+      var to = $("#" + id).data("to");
+      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="Dashboard" />
+<meta name="keyword"
+	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina" />
+<!-- <meta charset="ISO-8859-1"/> -->
+<!--   	<meta charset="utf-8"/>
+ -->
+
+<title>Form Management Application</title>
+
+<!-- Favicons -->
+<!--  <link href="/img/favicon.png" rel="icon"/>
+  <link href="/img/apple-touch-icon.png" rel="apple-touch-icon"/>  -->
+
+<link href="/img/favicon.png" rel="icon" />
+<link href="/img/apple-touch-icon.png" rel="apple-touch-icon" />
+<!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/> -->
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Bootstrap core CSS -->
+<!--  <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/> -->
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<!--external css-->
+<!--  <script th:src="@{../js/angular.js}"></script>  -->
+
+<script src="/js/angular.js"></script>
+<!-- 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.4.5/angular-route.js"></script> -->
+<!--  <script th:src="@{../js/UserMenu.js}"></script> 
+  
+  <link href="/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="/css/zabuto_calendar.css"/>
+  <link rel="stylesheet" type="text/css" href="/lib/gritter/css/jquery.gritter.css" />
+
+  <link href="/css/style.css" rel="stylesheet"/>
+  <link href="/css/style-responsive.css" rel="stylesheet"/>
+  <script src="/lib/chart-master/Chart.js"></script> -->
+
+
+<!-- <script th:src="@{../js/UserMenuTest.js}"></script> -->
+<script src="/js/UserMenu.js"></script>
+<link href="/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/css/zabuto_calendar.css" />
+<link rel="stylesheet" type="text/css"
+	href="/lib/gritter/css/jquery.gritter.css" />
+<link href="/css/style.css" rel="stylesheet" />
+<link href="/css/style-responsive.css" rel="stylesheet" />
+<script src="/lib/chart-master/Chart.js"></script>
+-
+
+
+</head>
+
+
+<body ng-app="myapp" ng-controller="UserController">
+	<section id="container">
+		<!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+		<!--header start-->
+		<header class="header black-bg">
+			<div class="sidebar-toggle-box">
+				<div class="fa fa-bars tooltips" data-placement="right"
+					data-original-title="Toggle Navigation"></div>
+			</div>
+			<!--logo start-->
+			<a href="/user/home" class="logo"><b>Form<span>App</span></b></a>
+			<!--logo end-->
+			<div class="nav notify-row" id="top_menu">
+				<!--  notification start -->
+
+				<!--  notification end -->
+			</div>
+			<div class="top-menu">
+				<ul class="nav pull-right top-menu">
+					<li><a th:href="@{/logout}" class="logout">Logout</a></li>
+				</ul>
+			</div>
+		</header>
+		<!--header end-->
+		<!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+		<!--sidebar start-->
+		<aside>
+			<div id="sidebar" class="nav-collapse ">
+				<!-- sidebar menu start-->
+				<ul class="sidebar-menu" id="nav-accordion">
+					<!--  <p class="centered"><a href="profile.html"><img src="img/ui-sam.jpg" class="img-circle" width="80"/></a></p>
+          <h5 class="centered">Sam Soffes</h5> -->
+					<!--  <li class="mt ng-scope"><a href="/user/mfile.html"><span>Generación de Arhivo "m"</span></a></li> -->
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Generación
+								de Arhivo "m"</span></a></li>
+					<li class="mt ng-scope"><a href="/user/pedimento.html"><span>Pediment Normal</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Desistimiento o Eliminación</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>De la Industria Automotriz</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Pedimento Complementario</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Previo de Consolidado</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Global Complementario</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Tránsitos</span></a></li>
+					
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Despacho Anticipado</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Rectificaciones</span></a></li>
+						
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Confirmación de Pago</span></a></li>
+						
+						
+						
+						
+				</ul>
+				<!-- sidebar menu end-->
+			</div>
+		</aside>
+		<!--sidebar end-->
+		<!-- ****************************************************	******************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+		<!--main content start-->
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row mt">
+					<!-- <div class="col-lg-12" ng-show="one">
+            <h4><i class="fa fa-angle-right"></i>{{currentForm.name}}</h4>
+            <div class="form-panel">
+              <form role="form" class="form-horizontal">
+               <div class="form-group" id="userform">
+                 
+                 
+                </div>
+                </form>
+              </div>
+             </div> -->
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="one">
+
+						<div class="panel-group" id="accordion">
+							<div id="userform">
+								<ul class="nav nav-tabs ng-scope">
+									<li class="active"><a data-toggle="tab"
+										href="/user/pedimento.html">Generales</a></li>
+									<li></li>
+									<li class=""><a  href="/user/partidas.html">Partidas</a></li>
+									<li></li>
+									<li class=""><a data-toggle="tab"
+										href="/user/contribuciones">Contribuciones</a></li>
+									<li></li>
+								</ul>
+								<div class="tab-content ng-scope">
+
+									<div id="tab1" class="tab-pane fade  in active">
+
+										<div>
+											<form novalidate="" id="form1" name="form1"
+												class="ng-pristine ng-valid-pattern ng-valid-maxlength ng-invalid ng-invalid-required">
+												<h2></h2>
+
+												<div class="form-group">
+													<label class="col-sm-2 control-label" for="keyofrecord">CLAVE
+														DEL TIPO DE REGISTRO</label>
+													<div class="col-sm-6">
+														<input
+															class="form-control ng-pristine ng-untouched ng-valid ng-valid-required ng-valid-pattern ng-valid-maxlength"
+															ng-model="formdata1.clave_del_Tipo_de_Registro"
+															ng-disabled="true"
+															ng-init="formdata1.clave_del_Tipo_de_Registro=501"
+															name="clave_del_Tipo_de_Registro" type="number"
+															id="clave_del_Tipo_de_Registro" value="501" required=""
+															ng-pattern="/^[1-9][0-9]*$/" limit-to="3" maxlength="3"
+															disabled="disabled"/>
+													</div>
+													<div class="col-sm-offset-8 col-sm-4">
+														<div class="col-sm-6 ng-hide" style="color: red"
+															ng-show="form1.clave_del_Tipo_de_Registro.$error.required">This
+															Field is Required*</div><br>
+														</br>
+														<div class="col-sm-6 ng-hide" style="color: red"
+															ng-show="form1.clave_del_Tipo_de_Registro.$error.pattern">This
+															Field cannot be null or zero</div>
+													</div>
+													
+													
+													<br>
+														</br>
+<div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">PATENTE O AUTORIZACIÓN</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata1.patente_o_autorización" ng-disabled="false" name="patente_o_autorización" type="number" id="patente_o_autorización" value="" required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="4" maxlength="4" /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div class="col-sm-6" style="color:red" ng-show="form1.patente_o_autorización.$error.required">This Field is Required*</div>
+                     <br></br>
+                     <div class="col-sm-6 ng-hide" style="color:red" ng-show="form1.patente_o_autorización.$error.pattern">This Field cannot be null or zero</div>
+                  </div>
+               </div>
+					<br></br>								<div class="form-group">
+														<label class="col-sm-2 control-label" for="keyofrecord">NÚMERO
+															DE PEDIMENTO</label>
+														<div class="col-sm-6">
+															<input
+																class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+																ng-model="formdata1.número_de_pedimento"
+																ng-disabled="false" name="número_de_pedimento"
+																type="number" id="número_de_pedimento" value=""
+																required="" ng-pattern="/^[9]{1}[0-9]{6}?$/"
+																limit-to="7" maxlength="7"
+																data-tooltip-append-to-body="true"
+																data-tooltip="El primer dígito debe corresponder al último dígito del año en curso, mientras que los seis dígitos restantes son un número único de control asignado por el agente aduanal,apoderado aduanal o mandatario conservando los CEROS a la izquierda para que en conjunto sean siempre 7 dígitos. " />
+														</div>
+														<div class="col-sm-offset-8 col-sm-4">
+															<div class="col-sm-6" style="color: red"
+																ng-show="form1.número_de_pedimento.$error.required">This
+																Field is Required*</div>
+															<br></br>
+															<div class="col-sm-6 ng-hide" style="color: red"
+																ng-show="form1.número_de_pedimento.$error.pattern">This
+																Field cannot be null or zero</div>
+														</div>
+													</div>
+													<br> </br>
+													  <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">ADUANA SECCIÓN DE DESPACHO</label>
+                  <div class="col-sm-6">
+                   <select id="second-choice" ng-model="formdata1.aduana_sección_de_Despacho" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+                        <option value="? undefined:undefined ?"></option></select>
+                  </div>   <div class="col-sm-offset-8 col-sm-4"></div>
+               </div>
+               <br></br>
+               
+               
+               <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">TIPO DE OPERACIÓN</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata1.tipo_de_Operación" ng-disabled="false" name="tipo_de_Operación" type="number" id="tipo_de_Operación" value="" required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="1" maxlength="1" /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div class="col-sm-6" style="color:red" ng-show="form1.tipo_de_Operación.$error.required">This Field is Required*</div>
+                     <br></br>
+                     <div class="col-sm-6 ng-hide" style="color:red" ng-show="form1.tipo_de_Operación.$error.pattern">This Field cannot be null or zero</div>
+                  </div>
+               </div>
+               <br></br>
+               <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">CLAVE DE PEDIMENTO</label>
+                  <div class="col-sm-6">
+                     <select id="second-choice" ng-model="formdata1.clave_de_pedimento" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+                        <option value="A1 ">A1 </option>
+               </select></div>
+                  <div class="col-sm-offset-8 col-sm-4"></div>
+               </div>
+               <br></br>
+<div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">ADUANA SECCIÓN DE ENTRADA O SALIDA</label>
+                  <div class="col-sm-6">
+                     <select id="second-choice" ng-model="formdata1.aduana_sección_de_Entrada_o_Salida" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+                        <option value="? undefined:undefined ?"></option>
+                        <option value="1">1</option>
+                        </select> </div>
+                  <div class="col-sm-offset-8 col-sm-4"></div>
+               </div>
+               <br></br>
+               
+               <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">CURP IMPORTADOR O EXPORTADOR</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" required="" ng-model="formdata1.curp_importador_o_exportador" ng-disabled="false" type="text" id="curp_importador_o_exportador" limit-to="18" name="curp_importador_o_exportador" maxlength="18" value="" ng-pattern="/^[^- ]+$/" /></div>
+                  <div class="form-group">
+                     <div class="col-sm-6"><input name="clave_formulario_principal" type="hidden" id="clave_formulario_principal" ng-model="formdata1.clave_formulario_principal" class="ng-pristine ng-untouched ng-valid" /></div>
+                  </div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div style="color:red" ng-show="form1.curp_importador_o_exportador.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+                  </div>
+               </div>
+               <br>
+               </br>
+               
+               <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">RFC IMPORTADOR O EXPORTADOR</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" required="" ng-model="formdata1.rfc_importador_o_exportador" ng-disabled="false" type="text" id="rfc_importador_o_exportador" limit-to="13" name="rfc_importador_o_exportador" maxlength="13" value="" ng-pattern="/^[^- ]+$/" /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div style="color:red" ng-show="form1.rfc_importador_o_exportador.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+                  </div>
+               </div>
+               <br></br>
+               <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">CURP AADUANAL RLEGAL APODERADOA MANDATARIO</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" required="" ng-model="formdata1.curp_AAduanal_RLegal_ApoderadoA_Mandatario" ng-disabled="false" type="text" id="curp_AAduanal_RLegal_ApoderadoA_Mandatario" limit-to="18" name="curp_AAduanal_RLegal_ApoderadoA_Mandatario" maxlength="18" value="" ng-pattern="/^[^- ]+$/" /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div style="color:red" ng-show="form1.curp_AAduanal_RLegal_ApoderadoA_Mandatario.$error.required">This Field is Required*</div>
+                     <br></br>
+                     <div style="color:red" ng-show="form1.curp_AAduanal_RLegal_ApoderadoA_Mandatario.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+                  </div>
+               </div>
+               <br></br>
+               
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">TIPO DE CAMBIO</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata1.tipo_de_cambio" ng-disabled="false" name="tipo_de_cambio" type="number" id="tipo_de_cambio" value="" required="" ng-pattern="/^\d{0,9}(\.\d{1,5})?$/" limit-to="15" maxlength="15" placeholder="El campo contiene hasta 9 enteros y hasta  5 fracciones." /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div class="col-sm-6" style="color:red" ng-show="form1.tipo_de_cambio.$error.required">This Field is Required*</div>
+                     <br></br>
+                     <div class="col-sm-6 ng-hide" style="color:red" ng-show="form1.tipo_de_cambio.$error.pattern">This Field cannot be null or zero</div>
+                  </div>
+               </div>
+               <br></br>
+               
+               <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">IMPORTE DEL PAGO DE FLETES</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata1.importe_del_Pago_de_Fletes" ng-disabled="false" name="importe_del_Pago_de_Fletes" type="number" id="importe_del_Pago_de_Fletes" value="" required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="12" maxlength="12" /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div class="col-sm-6 ng-hide" style="color:red" ng-show="form1.importe_del_Pago_de_Fletes.$error.pattern">This Field cannot be null or zero</div>
+                  </div>
+               </div>
+               <br></br>
+               
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">IMPORTE DEL PAGO DE PRIMAS DE SEGUROS</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata1.importe_del_Pago_de_Primas_de_Seguros" ng-disabled="false" name="importe_del_Pago_de_Primas_de_Seguros" type="number" id="importe_del_Pago_de_Primas_de_Seguros" value="" required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="12" maxlength="12" /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div class="col-sm-6 ng-hide" style="color:red" ng-show="form1.importe_del_Pago_de_Primas_de_Seguros.$error.pattern">This Field cannot be null or zero</div>
+                  </div>
+               </div>
+               <br></br>
+               
+               <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">IMPORTE DEL PAGO DE EMBALAJES</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata1.importe_del_Pago_de_Embalajes" ng-disabled="false" name="importe_del_Pago_de_Embalajes" type="number" id="importe_del_Pago_de_Embalajes" value="" required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="12" maxlength="12" /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div class="col-sm-6 ng-hide" style="color:red" ng-show="form1.importe_del_Pago_de_Embalajes.$error.pattern">This Field cannot be null or zero</div>
+                  </div>
+               </div>
+               <br></br>
+               <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">IMPORTE DEL PAGO DE OTROS INCREMENTABLES</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata1.importe_del_Pago_de_Otros_Incrementables" ng-disabled="false" name="importe_del_Pago_de_Otros_Incrementables" type="number" id="importe_del_Pago_de_Otros_Incrementables" value="" required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="12" maxlength="12" /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div class="col-sm-6 ng-hide" style="color:red" ng-show="form1.importe_del_Pago_de_Otros_Incrementables.$error.pattern">This Field cannot be null or zero</div>
+                  </div>
+               </div>
+               <br></br>
+               
+               
+<div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">PESO BRUTO TOTAL DE LA MERCANCÍAP</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata1.peso_Bruto_Total_de_la_Mercancíap" ng-disabled="false" name="peso_Bruto_Total_de_la_Mercancíap" type="number" id="peso_Bruto_Total_de_la_Mercancíap" value="" required="" ng-pattern="/^\d{0,14}(\.\d{1,3})?$/" limit-to="18" maxlength="18" placeholder="El campo contiene hasta 14 enteros y hasta  3 fracciones." /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div class="col-sm-6 ng-hide" style="color:red" ng-show="form1.peso_Bruto_Total_de_la_Mercancíap.$error.pattern">This Field cannot be null or zero</div>
+                  </div>
+               </div>
+               <br></br>
+               
+               <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">MEDIO TRANSPORTE SALIDA ADUANA SECCION SALIDA</label>
+                  <div class="col-sm-6">
+                     <select id="second-choice" ng-model="formdata1.medio_transporte_salida_aduana_seccion_salida" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+                        <option value="? undefined:undefined ?"></option>
+                        <option value="1">1</option>
+                        </select></div>
+                  <div class="col-sm-offset-8 col-sm-4"></div>
+               </div>
+               <br></br>
+               <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">MEDIO TRANSPORTE ARRIBO ADUANA SECCION ARRIBO</label>
+                  <div class="col-sm-6">
+                     <select id="second-choice" ng-model="formdata1.medio_transporte_arribo_aduana_seccion_arribo" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+                        <option value="? undefined:undefined ?"></option>
+                        <option value="1">1</option></select> </div>
+                  <div class="col-sm-offset-8 col-sm-4"></div>
+               </div>
+               <br></br>
+               <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">MEDIO TRANSPORTE ENTRADA SALIDA MERCANCIA TERRITORIO NACIONAL</label>
+                  <div class="col-sm-6">
+                     <select id="second-choice" ng-model="formdata1.medio_transporte_entrada_salida_mercancia_territorio_nacional" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+                        <option value="? undefined:undefined ?"></option>
+                        <option value="1">1</option></select> </div>
+                  <div class="col-sm-offset-8 col-sm-4"></div>
+               </div>
+               <br></br>
+               <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">ORIGEN O DESTINO DE LA MERCANCÍA</label>
+                  <div class="col-sm-6">
+                     <select id="second-choice" ng-model="formdata1.origen_o_Destino_de_la_mercancía" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+                        <option value="? undefined:undefined ?"></option>
+                        <option value="1">1</option></select></div>
+                  <div class="col-sm-offset-8 col-sm-4"></div>
+               </div>
+               <br></br>
+               <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">NOMBRE DEL IMPORTADOR O EXPORTADOR</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" required="" ng-model="formdata1.nombre_del_Importador_o_Exportador" ng-disabled="false" type="text" id="nombre_del_Importador_o_Exportador" limit-to="120" name="nombre_del_Importador_o_Exportador" maxlength="120" value="" ng-pattern="/^[^-_;*']+$/" /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div style="color:red" ng-show="form1.nombre_del_Importador_o_Exportador.$error.required">This Field is Required*</div>
+                     <br></br>
+                     <div style="color:red" ng-show="form1.nombre_del_Importador_o_Exportador.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+                  </div>
+               </div>
+               <br></br>
+               
+               <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">CALLE DOMICILIO IMPORTADOR O EXPORTADOR</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata1.calle_domicilio_importador_o_exportador" ng-disabled="false" type="text" id="calle_domicilio_importador_o_exportador" limit-to="80" name="calle_domicilio_importador_o_exportador" maxlength="80" value="" /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div style="color:red" ng-show="form1.calle_domicilio_importador_o_exportador.$error.required">This Field is Required*</div>
+                     <br></br>
+                     <div style="color:red" ng-show="form1.calle_domicilio_importador_o_exportador.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+                  </div>
+               </div>
+               <br></br>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">NUMERO EXTERIOR IMPORTADOR EXPORTADOR</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata1.numero_exterior_importador_exportador" ng-disabled="false" type="text" id="numero_exterior_importador_exportador" limit-to="10" name="numero_exterior_importador_exportador" maxlength="10" value="" /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div style="color:red" ng-show="form1.numero_exterior_importador_exportador.$error.required">This Field is Required*</div>
+                     <br></br>
+                     <div style="color:red" ng-show="form1.numero_exterior_importador_exportador.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+                  </div>
+               </div>
+               <br></br>
+ <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">CODIGO POSTAL DOMICILIO FISCAL IMPORTADOR EXPORTADOR</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata1.codigo_postal_domicilio_fiscal_importador_exportador" ng-disabled="false" type="text" id="codigo_postal_domicilio_fiscal_importador_exportador" limit-to="80" name="codigo_postal_domicilio_fiscal_importador_exportador" maxlength="80" value="" /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div style="color:red" ng-show="form1.codigo_postal_domicilio_fiscal_importador_exportador.$error.required">This Field is Required*</div>
+                     <br></br>
+                     <div style="color:red" ng-show="form1.codigo_postal_domicilio_fiscal_importador_exportador.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+                  </div>
+               </div>
+               <br></br>
+     <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">MUNICIPIO DEL DOMICILIO DEL IMPORTADOR O EXPORTADOR</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata1.municipio_del_domicilio_del_importador_o_exportador" ng-disabled="false" type="text" id="municipio_del_domicilio_del_importador_o_exportador" limit-to="80" name="municipio_del_domicilio_del_importador_o_exportador" maxlength="80" value="" /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div style="color:red" ng-show="form1.municipio_del_domicilio_del_importador_o_exportador.$error.required">This Field is Required*</div>
+                     <br></br>
+                     <div style="color:red" ng-show="form1.municipio_del_domicilio_del_importador_o_exportador.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+                  </div>
+               </div>
+               <br></br>
+				<div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">ENTIDAD FEDERATIVA DEL DOMICILIO DEL IMPORTADOR O EXPORTADOR</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata1.entidad_federativa_del_domicilio_del_importador_o_exportador" ng-disabled="false" type="text" id="entidad_federativa_del_domicilio_del_importador_o_exportador" limit-to="3" name="entidad_federativa_del_domicilio_del_importador_o_exportador" maxlength="3" value="" /></div>
+                  <div class="col-sm-offset-8 col-sm-4"></div>
+               </div>
+               <br></br>
+                 <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">PAÍS DEL DOMICILIO FISCAL DEL IMPORTADOR O EXPORTADOR</label>
+                  <div class="col-sm-6">
+                     <select id="second-choice" ng-model="formdata1.país_del_domicilio_fiscal_del_importador_o_exportador" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+                        <option value="? undefined:undefined ?"></option>
+                        <option value="A1">A1</option>
+                      </select></div>
+                  <div class="col-sm-offset-8 col-sm-4"></div>
+               </div>
+               <br></br>
+                <div class="form-group">
+                  <label class="col-sm-2 control-label" for="keyofrecord">RFC DE FACTURACIÓN DE LOS SERVICIOS DE LA OPERACIÓN</label>
+                  <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" required="" ng-model="formdata1.rfc_de_facturación_de_los_servicios_de_la_operación" ng-disabled="false" type="text" id="rfc_de_facturación_de_los_servicios_de_la_operación" limit-to="13" name="rfc_de_facturación_de_los_servicios_de_la_operación" maxlength="13" value="" ng-pattern="/^[^- ]+$/" /></div>
+                  <div class="col-sm-offset-8 col-sm-4">
+                     <div style="color:red" ng-show="form1.rfc_de_facturación_de_los_servicios_de_la_operación.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+                  </div>
+               </div>
+               <br></br>
+               	<div class="form-group">
+                  <div class="col-lg-offset-2 col-lg-10"><button ng-disabled="isDisabled1 || form1.$invalid" class="btn btn-theme" ng-click="isDisabled1=true;isLock1=true;$event.preventDefault();save(formdata1,1,1)" disabled="disabled">Guardar</button><button class="btn btn-theme buttonclass"> <a  href="/user/pedimento.html">Return back</a></button></div>
+               </div>
+
+</div>            </form>
+                        								<!-- formgroup div end -->
+            
+            <br></br>
+											<div class="col-sm-12">
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab36">Transporte</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab19">Guías</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab4">Contenedores</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab15">Facturas</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab16">Fechas</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab20">Identificadores</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab7">CuentasAduaneras</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab24">Observaciones</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab8">Descargos</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab3">Compensaciones</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab14">DocumentosPagoVirtuales</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab2">Candados</a>
+												</button>
+												<button class="btn btn-theme buttonclass">
+													<a data-toggle="tab" href="#tab9">Destinatario</a>
+												</button>
+											</div>
+
+										</div></div></div></div></div>
+
+
+				</div>
+
+				<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="two">
+					<div class="panel-group" id="accordion">
+						<div id="peditableData"></div>
+					</div>
+				</div>
+				<div class="col-lg-6 col-md-6 col-sm-12" ng-show="success"
+					ng-cloak="ng-cloak">
+					<!--  ALERTS EXAMPLES -->
+					<div class="showback">
+						<div class="alert alert-success">
+							<b> Felicidades!</b> Datos guardados exitosamente
+						</div>
+					</div>
+				</div>
+
+
+				</div>
+				<!-- /row -->
+			</section>
+		</section>
+
+	</section>
+	<!-- js placed at the end of the document so the pages load faster -->
+	<!--  <script src="/lib/jquery/jquery.min.js"></script>
+
+  <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="/lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="/lib/jquery.scrollTo.min.js"></script>
+  <script src="/lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="/lib/jquery.sparkline.js"></script>
+  <script src="/lib/common-scripts.js"></script>
+  <script type="text/javascript" src="/lib/gritter/js/jquery.gritter.js"></script>
+  <script type="text/javascript" src="/lib/gritter-conf.js"></script>
+
+  <script src="/lib/sparkline-chart.js"></script>
+  <script src="/lib/zabuto_calendar.js"></script>
+  <script src="https://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script> 
+  -->
+	<script
+		src="https://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+	<script src="/lib/jquery/jquery.min.js"></script>
+
+	<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+	<script class="include" type="text/javascript"
+		src="/lib/jquery.dcjqaccordion.2.7.js"></script>
+	<script src="/lib/jquery.scrollTo.min.js"></script>
+	<script src="/lib/jquery.nicescroll.js" type="text/javascript"></script>
+	<script src="/lib/jquery.sparkline.js"></script>
+
+	<script src="/lib/common-scripts.js"></script>
+	<script type="text/javascript" src="/lib/gritter/js/jquery.gritter.js"></script>
+	<script type="text/javascript" src="/lib/gritter-conf.js"></script>
+
+	<script src="/lib/sparkline-chart.js"></script>
+	<script src="/lib/zabuto_calendar.js"></script>
+	<script type="text/javascript">
+    $(document).ready(function() {
+      var unique_id = $.gritter.add({
+        // (string | mandatory) the heading of the notification
+        title: 'Welcome to Dashio!',
+        // (string | mandatory) the text inside the notification
+        text: '',
+        // (string | optional) the image to display on the left
+        image: 'img/ui-sam.jpg',
+        // (bool | optional) if you want it to fade out on its own or just sit there
+        sticky: false,
+        // (int | optional) the time you want it to be alive for before fading out
+        time: 8000,
+        // (string | optional) the class name you want to apply to that specific message
+        class_name: 'my-sticky-class'
+      });
+
+      return false;
+    });
+  </script>
+	<script type="application/javascript">
+    $(document).ready(function() {
+      $("#date-popover").popover({
+        html: true,
+        trigger: "manual"
+      });
+   /*    $('#tableId').DataTable();
+ */      $("#date-popover").hide();
+      $("#date-popover").click(function(e) {
+        $(this).hide();
+      });
+
+      $("#my-calendar").zabuto_calendar({
+        action: function() {
+          return myDateFunction(this.id, false);
+        },
+        action_nav: function() {
+          return myNavFunction(this.id);
+        },
+        ajax: {
+          url: "show_data.php?action=1",
+          modal: true
+        },
+        legend: [{
+            type: "text",
+            label: "Special event",
+            badge: "00"
+          },
+          {
+            type: "block",
+            label: "Regular event",
+          }
+        ]
+      });
+    });
+
+    function myNavFunction(id) {
+      $("#date-popover").hide();
+      var nav = $("#" + id).data("navigation");
+      var to = $("#" + id).data("to");
+      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+  </script>
+</body>
+
+</html>
