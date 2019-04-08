@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+
+	<div th:fragment="descargos"
+		class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="descargos">
+		<div class="panel-group" id="accordion8">
+			<div>
+				<ul class="nav nav-tabs ng-scope">
+					<li class="active"><a data-toggle="tab"
+						href="/user/pedimento.html">Generales</a></li>
+					<li></li>
+					<li class=""><a href="/user/partidas.html">Partidas</a></li>
+					<li></li>
+					<li class=""><a data-toggle="tab" href="/user/contribuciones">Contribuciones</a></li>
+					<li></li>
+				</ul>
+				<div class="tab-content ng-scope">
+					<div id="tab8" class="tab-pane fade active show in">
+						<div>
+							<div class="table-responsive">
+								<table id="tableId"
+									class="table table-striped table-advance table-hover">
+									<thead>
+										<tr>
+											<th>PATENTE AUTORIZACIÓN ORIGINAL</th>
+											<th>NÚMERO PEDIMENTO OPERACIÓN ORIGINAL</th>
+											<th>ADUANA SECCIÓ REALIZÓ OPERACION ORIGINAL</th>
+											<th>CLAVE DOCUMENTO TRAMITE OPERACION ORIGINAL ÚLTIMA
+												RECTIFICACIÓN</th>
+											<th>FECHA PAGO PEDIMENTO ORIGINAL</th>
+											<th>FRACCIÓN ARANCELARIA DESCARGANDO</th>
+											<th>CLAVE MEDIDA LIGIE</th>
+											<th>CANTIDAD MERCANCÍA DESCARGA FRACCIÓN</th>
+											<th>Accciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr
+											ng-repeat="data in deppedimento.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter: search">
+											<td>{{data.patente_autorización_original}}</td>
+											<td>{{data.número_Pedimento_operación_original}}</td>
+											<td>{{data.aduana_secció_realizó_operacion_original}}</td>
+											<td>{{data.clave_documento_tramite_operacion_original_última_rectificación}}</td>
+											<td>{{data.fecha_pago_pedimento_original}}</td>
+											<td>{{data.fracción_arancelaria_descargando}}</td>
+											<td>{{data.clave_medida_LIGIE}}</td>
+											<td>{{data.cantidad_mercancía_descarga_fracción}}</td>
+											<td ng-click="edit(data,'formdata8','descargos')"><i
+												class="fa fa-pencil"></i></td>
+											<td ng-click="delete(data,'deppedimento')"><i
+												class="fa fa-trash-o "></i></td>
+
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+							<hr></hr>
+						</div>
+						<div>
+							<form novalidate="" id="form8" name="form8"
+								class="ng-pristine ng-valid-pattern ng-valid-maxlength ng-invalid ng-invalid-required">
+								<h2></h2>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">CLAVE
+										DEL TIPO DE REGISTRO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-valid ng-valid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata8.clave_del_Tipo_de_Registro"
+											ng-disabled="true"
+											ng-init="formdata8.clave_del_Tipo_de_Registro=512"
+											name="clave_del_Tipo_de_Registro" type="number"
+											id="clave_del_Tipo_de_Registro" value="512" required=""
+											ng-pattern="/^[1-9][0-9]*$/" limit-to="3" maxlength="3"
+											disabled="disabled" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form8.clave_del_Tipo_de_Registro.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form8.clave_del_Tipo_de_Registro.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">NÚMERO
+										PEDIMENTO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata8.número_de_pedimento" ng-disabled="false"
+											name="número_de_pedimento" type="number" id="número_Pedimento"
+											value="" required="" ng-pattern="/^[9]{1}[0-9]{6}?$/"
+											limit-to="7" maxlength="7" data-tooltip-append-to-body="true"
+											data-tooltip="El primer dígito debe corresponder al último dígito del año en curso, mientras que los seis dígitos restantes son un número único de control asignado por el agente aduanal,apoderado aduanal o mandatario conservando los CEROS a la izquierda para que en conjunto sean siempre 7 dígitos. " />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6" style="color: red"
+											ng-show="form8.número_de_pedimento.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form8.número_de_pedimento.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">PATENTE
+										AUTORIZACIÓN ORIGINAL</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata8.patente_autorización_original"
+											ng-disabled="false" name="patente_autorización_original"
+											type="number" id="patente_autorización_original" value=""
+											required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="4"
+											maxlength="4" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6" style="color: red"
+											ng-show="form8.patente_autorización_original.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form8.patente_autorización_original.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">NÚMERO
+										PEDIMENTO OPERACIÓN ORIGINAL</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata8.número_Pedimento_operación_original"
+											ng-disabled="false"
+											name="número_Pedimento_operación_original" type="number"
+											id="número_Pedimento_operación_original" value="" required=""
+											ng-pattern="/^[1-9][0-9]*$/" limit-to="7" maxlength="7" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6" style="color: red"
+											ng-show="form8.número_Pedimento_operación_original.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form8.número_Pedimento_operación_original.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">ADUANA
+										SECCIÓ REALIZÓ OPERACION ORIGINAL</label>
+									<div class="col-sm-6">
+										<select id="second-choice"
+											ng-model="formdata8.aduana_secció_realizó_operacion_original"
+											required="required"
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+											<option value="? undefined:undefined ?"></option>
+											<option value="1">1</option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="5">5</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="7">7</option>
+											<option value="7">7</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="8">8</option>
+											<option value="11">11</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+											<option value="12">12</option>
+											<option value="12">12</option>
+											<option value="12">12</option>
+											<option value="14">14</option>
+											<option value="14">14</option>
+											<option value="14">14</option>
+											<option value="14">14</option>
+											<option value="14">14</option>
+											<option value="14">14</option>
+											<option value="14">14</option>
+											<option value="16">16</option>
+											<option value="16">16</option>
+											<option value="17">17</option>
+											<option value="17">17</option>
+											<option value="17">17</option>
+											<option value="17">17</option>
+											<option value="18">18</option>
+											<option value="18">18</option>
+											<option value="18">18</option>
+											<option value="19.0">19.0</option>
+											<option value="19.0">19.0</option>
+											<option value="19.0">19.0</option>
+											<option value="20">20</option>
+											<option value="20">20</option>
+											<option value="22">22</option>
+											<option value="23">23</option>
+											<option value="23">23</option>
+											<option value="24">24</option>
+											<option value="24">24</option>
+											<option value="24">24</option>
+											<option value="25">25</option>
+											<option value="26">26</option>
+											<option value="27">27</option>
+											<option value="27">27</option>
+											<option value="27">27</option>
+											<option value="28">28</option>
+											<option value="28">28</option>
+											<option value="30">30</option>
+											<option value="30">30</option>
+											<option value="30">30</option>
+											<option value="30">30</option>
+											<option value="30">30</option>
+											<option value="31">31</option>
+											<option value="31">31</option>
+											<option value="33">33</option>
+											<option value="34">34</option>
+											<option value="34">34</option>
+											<option value="37">37</option>
+											<option value="37">37</option>
+											<option value="37">37</option>
+											<option value="37">37</option>
+											<option value="37">37</option>
+											<option value="38">38</option>
+											<option value="39.0">39.0</option>
+											<option value="40">40</option>
+											<option value="40">40</option>
+											<option value="42">42</option>
+											<option value="43">43</option>
+											<option value="43">43</option>
+											<option value="44">44</option>
+											<option value="46">46</option>
+											<option value="46">46</option>
+											<option value="46">46</option>
+											<option value="47">47</option>
+											<option value="47">47</option>
+											<option value="47">47</option>
+											<option value="48">48</option>
+											<option value="48">48</option>
+											<option value="48">48</option>
+											<option value="50">50</option>
+											<option value="50">50</option>
+											<option value="50">50</option>
+											<option value="51">51</option>
+											<option value="51">51</option>
+											<option value="52">52</option>
+											<option value="52">52</option>
+											<option value="52">52</option>
+											<option value="52">52</option>
+											<option value="53">53</option>
+											<option value="53">53</option>
+											<option value="53">53</option>
+											<option value="64">64</option>
+											<option value="64">64</option>
+											<option value="64">64</option>
+											<option value="64">64</option>
+											<option value="64">64</option>
+											<option value="65">65</option>
+											<option value="67">67</option>
+											<option value="67">67</option>
+											<option value="67">67</option>
+											<option value="73">73</option>
+											<option value="73">73</option>
+											<option value="73">73</option>
+											<option value="73">73</option>
+											<option value="73">73</option>
+											<option value="73">73</option>
+											<option value="73">73</option>
+											<option value="75">75</option>
+											<option value="75">75</option>
+											<option value="75">75</option>
+											<option value="75">75</option>
+											<option value="75">75</option>
+											<option value="80">80</option>
+											<option value="81">81</option>
+											<option value="81">81</option>
+											<option value="82">82</option>
+											<option value="83">83</option>
+											<option value="83">83</option>
+											<option value="83">83</option>
+											<option value="83">83</option>
+											<option value="84">84</option>
+											<option value="84">84</option>
+											<option value="84">84</option>
+										</select>
+									</div>
+									<div class="col-sm-offset-8 col-sm-4"></div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">CLAVE
+										DOCUMENTO TRAMITE OPERACION ORIGINAL ÚLTIMA RECTIFICACIÓN</label>
+									<div class="col-sm-6">
+										<select id="second-choice"
+											ng-model="formdata8.clave_documento_tramite_operacion_original_última_rectificación"
+											required="required"
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+											<option value="A1 ">A1</option>
+											<option value="A3">A3</option>
+											<option value="C1">C1</option>
+											<option value="C2">C2</option>
+											<option value="D1 ">D1</option>
+											<option value="GC">GC</option>
+											<option value="K1">K1</option>
+											<option value="L1">L1</option>
+											<option value="P1">P1</option>
+											<option value="S2">S2</option>
+											<option value="T1">T1</option>
+											<option value=""></option>
+											<option value="VF">VF</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="VU">VU</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="V1 ">V1</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="V2 ">V2</option>
+											<option value=""></option>
+											<option value="V5">V5</option>
+											<option value=""></option>
+											<option value="V6 ">V6</option>
+											<option value="V7">V7</option>
+											<option value="V9 ">V9</option>
+											<option value="VD">VD</option>
+											<option value=""></option>
+											<option value="AD ">AD</option>
+											<option value="AJ ">AJ</option>
+											<option value=""></option>
+											<option value="BA ">BA</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="BB">BB</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="BC">BC</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="BD ">BD</option>
+											<option value="BE">BE</option>
+											<option value="BF">BF</option>
+											<option value="BH">BH</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="BI">BI</option>
+											<option value="BM">BM</option>
+											<option value=""></option>
+											<option value="BO">BO</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="BP">BP</option>
+											<option value="BR">BR</option>
+											<option value="H1">H1</option>
+											<option value="H8">H8</option>
+											<option value=""></option>
+											<option value="I1">I1</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="F4">F4</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="F5">F5</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="IN">IN</option>
+											<option value=""></option>
+											<option value="AF">AF</option>
+											<option value="RT">RT</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="A4">A4</option>
+											<option value="E1">E1</option>
+											<option value="E2">E2</option>
+											<option value="G1">G1</option>
+											<option value="C3">C3</option>
+											<option value="K2">K2</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="A5">A5</option>
+											<option value="E3">E3</option>
+											<option value="E4">E4</option>
+											<option value="G2 ">G2</option>
+											<option value="K3">K3</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="F2 ">F2</option>
+											<option value="F3">F3</option>
+											<option value="V3">V3</option>
+											<option value="V4">V4</option>
+											<option value=""></option>
+											<option value="F8">F8</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="F9">F9</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="G6">G6</option>
+											<option value="G7">G7</option>
+											<option value="V8">V8</option>
+											<option value=""></option>
+											<option value="M1">M1</option>
+											<option value="M2">M2</option>
+											<option value="J3">J3</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="G8">G8</option>
+											<option value="M3">M3</option>
+											<option value="M4">M4</option>
+											<option value="M5">M5</option>
+											<option value="J4">J4</option>
+											<option value=""></option>
+											<option value=""></option>
+											<option value="T3">T3</option>
+											<option value=""></option>
+											<option value="T6">T6</option>
+											<option value="T7 ">T7</option>
+											<option value="T9 ">T9</option>
+											<option value=""></option>
+											<option value="R1">R1</option>
+											<option value="CT">CT</option>
+											<option value=""></option>
+										</select>
+									</div>
+									<div class="col-sm-offset-8 col-sm-4"></div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">FECHA
+										PAGO PEDIMENTO ORIGINAL</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength"
+											required=""
+											ng-model="formdata8.fecha_pago_pedimento_original"
+											ng-disabled="false" type="text"
+											id="fecha_pago_pedimento_original" limit-to="8"
+											name="fecha_pago_pedimento_original" maxlength="8" value="" />
+									</div>
+									<div class="form-group">
+										<div class="col-sm-6">
+											<input name="clave_formulario_principal" type="hidden"
+												id="clave_formulario_principal"
+												ng-model="formdata8.clave_formulario_principal"
+												class="ng-pristine ng-untouched ng-valid" />
+										</div>
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div style="color: red"
+											ng-show="form8.fecha_pago_pedimento_original.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div style="color: red"
+											ng-show="form8.fecha_pago_pedimento_original.$error.pattern"
+											class="ng-hide">This Field cannot be null or zero*</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">FRACCIÓN
+										ARANCELARIA DESCARGANDO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength"
+											required=""
+											ng-model="formdata8.fracción_arancelaria_descargando"
+											ng-disabled="false" type="text"
+											id="fracción_arancelaria_descargando" limit-to="8"
+											name="fracción_arancelaria_descargando" maxlength="8"
+											value="" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4"></div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">CLAVE
+										MEDIDA LIGIE</label>
+									<div class="col-sm-6">
+										<select id="second-choice"
+											ng-model="formdata8.clave_medida_LIGIE" required="required"
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+											<option value="? undefined:undefined ?"></option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+											<option value="13">13</option>
+											<option value="14">14</option>
+											<option value="15">15</option>
+											<option value="16">16</option>
+											<option value="17">17</option>
+											<option value="18">18</option>
+											<option value="19">19</option>
+											<option value="20">20</option>
+											<option value="21">21</option>
+										</select>
+									</div>
+									<div class="col-sm-offset-8 col-sm-4"></div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">CANTIDAD
+										MERCANCÍA DESCARGA FRACCIÓN</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata8.cantidad_mercancía_descarga_fracción"
+											ng-disabled="false"
+											name="cantidad_mercancía_descarga_fracción" type="number"
+											id="cantidad_mercancía_descarga_fracción" value=""
+											required="" ng-pattern="/^\d{0,12}(\.\d{1,5})?$/"
+											limit-to="18" maxlength="18"
+											placeholder="El campo contiene hasta 12 enteros y hasta  5 fracciones." />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form8.cantidad_mercancía_descarga_fracción.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<div class="col-lg-offset-2 col-lg-10">
+										<button ng-disabled="isDisabled8 || form8.$invalid"
+											class="btn btn-theme"
+											ng-click="isLock8=true;$event.preventDefault();save(formdata8,8,1,'formdata8','deppedimento','512','descargos','true')"
+											disabled="disabled">Guardar</button>
+										<button ng-click="dependentReturn()"
+											class="btn btn-theme buttonclass">Return back</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

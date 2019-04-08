@@ -18,7 +18,7 @@ public class Fechas  extends AuditBase{
 	 private long id;
 	
 	private int clave_del_Tipo_de_Registro;
-	private long Número_Pedimento;
+	private long número_de_pedimento;
 	
 	private int Tipo_fecha;
 	Date Fecha;
@@ -39,11 +39,12 @@ public class Fechas  extends AuditBase{
 	public void setclave_del_Tipo_de_Registro(int clave_del_Tipo_de_Registro) {
 		clave_del_Tipo_de_Registro = clave_del_Tipo_de_Registro;
 	}
-	public long getNúmero_Pedimento() {
-		return Número_Pedimento;
+	
+	public long getNúmero_de_pedimento() {
+		return número_de_pedimento;
 	}
-	public void setNúmero_Pedimento(long número_Pedimento) {
-		Número_Pedimento = número_Pedimento;
+	public void setNúmero_de_pedimento(long número_de_pedimento) {
+		this.número_de_pedimento = número_de_pedimento;
 	}
 	public int getTipo_fecha() {
 		return Tipo_fecha;
@@ -61,8 +62,9 @@ public class Fechas  extends AuditBase{
 	
 	@Override
 	public String toString() {
-		return "Fechas [id=" + id + ", clave_del_Tipo_de_Registro=" + clave_del_Tipo_de_Registro + ", Número_Pedimento="
-				+ Número_Pedimento + ", Tipo_fecha=" + Tipo_fecha + ", Fecha=" + Fecha + "]";
+		return "Fechas [id=" + id + ", clave_del_Tipo_de_Registro=" + clave_del_Tipo_de_Registro
+				+ ", número_de_pedimento=" + número_de_pedimento + ", Tipo_fecha=" + Tipo_fecha + ", Fecha=" + Fecha
+				+ "]";
 	} 
 	 
 	

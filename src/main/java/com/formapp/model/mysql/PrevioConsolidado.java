@@ -17,7 +17,7 @@ public class PrevioConsolidado extends AuditBase{
 	
 	private int clave_del_Tipo_de_Registro;
 	private int patente_autorización;
-	private long número_Pedimento;
+	private long número_de_pedimento;
 	private String aduana_sección_despacho ;
 	private String clave_pedimento ;
 	private int tipo_Operación;
@@ -52,12 +52,15 @@ public class PrevioConsolidado extends AuditBase{
 	public void setPatente_autorización(int patente_autorización) {
 		this.patente_autorización = patente_autorización;
 	}
-	public long getNúmero_Pedimento() {
-		return número_Pedimento;
+	
+	public long getNúmero_de_pedimento() {
+		return número_de_pedimento;
 	}
-	public void setNúmero_Pedimento(long número_Pedimento) {
-		this.número_Pedimento = número_Pedimento;
+
+	public void setNúmero_de_pedimento(long número_de_pedimento) {
+		this.número_de_pedimento = número_de_pedimento;
 	}
+
 	public String getAduana_sección_despacho() {
 		return aduana_sección_despacho;
 	}
@@ -113,7 +116,7 @@ public class PrevioConsolidado extends AuditBase{
 	@Override
 	public String toString() {
 		return "PrevioConsolidado [id=" + id + ", clave_del_Tipo_de_Registro=" + clave_del_Tipo_de_Registro
-				+ ", patente_autorización=" + patente_autorización + ", número_Pedimento=" + número_Pedimento
+				+ ", patente_autorización=" + patente_autorización + ", número_de_pedimento=" + número_de_pedimento
 				+ ", aduana_sección_despacho=" + aduana_sección_despacho + ", clave_pedimento=" + clave_pedimento
 				+ ", tipo_Operación=" + tipo_Operación + ", CURP_Importador_Exportador=" + CURP_Importador_Exportador
 				+ ", RFC_Importador_Exportador=" + RFC_Importador_Exportador + ", CURP_agente_aduanal="

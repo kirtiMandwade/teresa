@@ -16,7 +16,7 @@ public class PartidasInformeIA extends AuditBase {
 	 private long id;
 	
 	private int clave_del_Tipo_de_Registro; 
-	private long número_pedimento; 
+	private long número_de_pedimento; 
 	private String fracción_Arancelaria;
 	private int número_Partida; 
 	private long importe_precio_pagado_mercancía;
@@ -43,11 +43,12 @@ public class PartidasInformeIA extends AuditBase {
 	public void setclave_del_Tipo_de_Registro(int clave_del_Tipo_de_Registro) {
 		this.clave_del_Tipo_de_Registro = clave_del_Tipo_de_Registro;
 	}
-	public long getNúmero_pedimento() {
-		return número_pedimento;
+	
+	public long getNúmero_de_pedimento() {
+		return número_de_pedimento;
 	}
-	public void setNúmero_pedimento(long número_pedimento) {
-		this.número_pedimento = número_pedimento;
+	public void setNúmero_de_pedimento(long número_de_pedimento) {
+		this.número_de_pedimento = número_de_pedimento;
 	}
 	public String getFracción_Arancelaria() {
 		return fracción_Arancelaria;
@@ -113,15 +114,15 @@ public class PartidasInformeIA extends AuditBase {
 
 	@Override
 	public String toString() {
-		return "PartidasInformeIA [id=" + id + ", clave_del_Tipo_de_Registro=" + clave_del_Tipo_de_Registro + ", número_pedimento="
-				+ número_pedimento + ", fracción_Arancelaria=" + fracción_Arancelaria + ", número_Partida="
-				+ número_Partida + ", importe_precio_pagado_mercancía=" + importe_precio_pagado_mercancía
-				+ ", valor_factura_Dólares=" + valor_factura_Dólares + ", cantidad_mercancía_Unidades="
-				+ cantidad_mercancía_Unidades + ", clave_Unidad_Medida_Comercialización="
-				+ clave_Unidad_Medida_Comercialización + ", cantidad_mercancía_Unidades_Medida_LIGIE="
-				+ cantidad_mercancía_Unidades_Medida_LIGIE + ", clave_unidad_Medida_LIGIE=" + clave_unidad_Medida_LIGIE
-				+ ", país_Origen_Destino_mercancía=" + país_Origen_Destino_mercancía + ", país_Vendedor_Comprador="
-				+ país_Vendedor_Comprador + "]";
+		return "PartidasInformeIA [id=" + id + ", clave_del_Tipo_de_Registro=" + clave_del_Tipo_de_Registro
+				+ ", número_de_pedimento=" + número_de_pedimento + ", fracción_Arancelaria=" + fracción_Arancelaria
+				+ ", número_Partida=" + número_Partida + ", importe_precio_pagado_mercancía="
+				+ importe_precio_pagado_mercancía + ", valor_factura_Dólares=" + valor_factura_Dólares
+				+ ", cantidad_mercancía_Unidades=" + cantidad_mercancía_Unidades
+				+ ", clave_Unidad_Medida_Comercialización=" + clave_Unidad_Medida_Comercialización
+				+ ", cantidad_mercancía_Unidades_Medida_LIGIE=" + cantidad_mercancía_Unidades_Medida_LIGIE
+				+ ", clave_unidad_Medida_LIGIE=" + clave_unidad_Medida_LIGIE + ", país_Origen_Destino_mercancía="
+				+ país_Origen_Destino_mercancía + ", país_Vendedor_Comprador=" + país_Vendedor_Comprador + "]";
 	}
     
 	

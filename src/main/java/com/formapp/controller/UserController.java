@@ -2,10 +2,10 @@ package com.formapp.controller;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.persistence.Table;
-import javax.websocket.server.PathParam;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -17,6 +17,7 @@ import org.springframework.util.ReflectionUtils;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +32,7 @@ import com.formapp.model.FormFields;
 import com.formapp.model.FormManager;
 import com.formapp.model.Response;
 import com.formapp.model.mysql.AuditBase;
+import com.formapp.model.mysql.Contribuciones;
 import com.formapp.model.mysql.Generales;
 import com.formapp.model.mysql.Partidas;
 import com.formapp.model.mysql.Pedimento;
@@ -39,6 +41,7 @@ import com.formapp.model.mysql.TasasNivelPartida;
 import com.formapp.model.mysql.Transporte;
 import com.formapp.repository.Appendice1Repository;
 import com.formapp.repository.AppendiceManagerRepo;
+import com.formapp.repository.ContribucionRepository;
 import com.formapp.repository.DependentFormRepo;
 import com.formapp.repository.FormDataRepository;
 import com.formapp.repository.FormFieldsRepository;
@@ -46,6 +49,7 @@ import com.formapp.repository.FormManagerRepo;
 import com.formapp.repository.GeneralasRepository;
 import com.formapp.repository.PartidasRepository;
 import com.formapp.repository.PedimentoRepository;
+import com.formapp.repository.TasasRepository;
 import com.formapp.repository.TransporteRepository;
 import com.formapp.userdao.Genericdao;
 import com.formapp.userservice.FormDataService;
@@ -54,6 +58,9 @@ import com.google.gson.Gson;
 @Controller
 @RequestMapping("/user")
 public class UserController {
+
+	public static HashMap<String, Integer> hmMap =new HashMap<>();
+
 	@Value("${package.path}")
 	private String pckgpath;
 
@@ -62,6 +69,12 @@ public class UserController {
 
 	@Autowired
 	PartidasRepository partidasRepo;
+
+	@Autowired
+	ContribucionRepository contribucionRepository;
+	
+	@Autowired
+	TasasRepository tasaRepository;
 	
 	@Autowired
 	AppendiceManagerRepo appendiceManagerRepo;
@@ -106,6 +119,13 @@ public class UserController {
 		return "/pedimento";
 	}
 	
+
+	@GetMapping("/contribuciones")
+	public String contribucionesHome() {
+
+		return "/contribuciones";
+	}
+
 
 	@GetMapping("/addPedimento")
 	public String addPedimento() {
@@ -184,7 +204,35 @@ public class UserController {
 			
 		return arrPart;
 	}
+
+	@GetMapping("/getContriData")
+	public @ResponseBody List<Contribuciones> getContriData(@RequestParam("id") int id) {
+		long numeroid= id;
+		 List<Contribuciones> listContr=	contribucionRepository.findByNúmerodepedimento(numeroid);
 		
+		 
+		 List<Tasas> list=	tasaRepository.findByNúmerodepedimento(numeroid);
+for(Contribuciones cont:listContr) {
+	for(Tasas tasa:list) {
+		if(cont.getNúmerodepedimento()==tasa.getNúmerodepedimento()) {
+			cont.setTasa_Contribución(tasa.getTasa_Contribución());
+			cont.setClave_Tipo_Tasa(tasa.getClave_Tipo_Tasa());
+			break;
+		}
+		
+	}
+}
+			
+		return listContr;
+	}	
+	@GetMapping("/getContriTasaData")
+	public @ResponseBody List<Tasas> getContriTasaData(@RequestParam("id") int id) {
+		
+		 List<Tasas> list=	tasaRepository.findByNúmerodepedimento(id);
+		
+			
+		return list;
+	}	
 	
 	@GetMapping("/getGeneralsData")
 	public @ResponseBody List<Generales> getGeneralsData() {
@@ -196,6 +244,20 @@ public class UserController {
 		return arrGeneral;
 	}
 
+	@PutMapping("/updateNumero")
+	public @ResponseBody String updateNumero(@RequestParam("numero") String numero) {
+	
+		hmMap.put("500", Integer.parseInt(numero));
+	return "true";
+	}
+	
+	@GetMapping("/getNumero")
+	public @ResponseBody int getNumero() {
+	
+		return hmMap.get("500");
+	
+	}
+	
 	@DeleteMapping("/deleteData")
 	public @ResponseBody String deleteData(@RequestBody String jsonString,@RequestParam("managerid") String managerid) {
 
@@ -306,7 +368,14 @@ public class UserController {
 		return "true";
 	}
 */
-	
+	@RequestMapping(value = "/saveContri", method = RequestMethod.POST)
+	public @ResponseBody String saveContri(@RequestBody Contribuciones contr){
+		
+		Tasas tasas = new Tasas(509, contr.getNúmerodepedimento(), contr.getClave_Contribución(), contr.getTasa_Contribución(), contr.getClave_Tipo_Tasa());
+	contribucionRepository.save(contr);
+	tasaRepository.save(tasas);
+	return "true";
+	}
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public @ResponseBody Object save(@RequestBody String jsonString,@RequestParam("managerid") String managerid) {
 		System.out.println("jsonString "+jsonString);
@@ -320,6 +389,9 @@ public class UserController {
 		try {
 		FormData data = dataService.findByCode(jsonObject.get("clave_del_Tipo_de_Registro").toString());
 		
+		if(jsonObject.get("clave_del_Tipo_de_Registro").toString().equals("500")) {
+			hmMap.put("500", Integer.parseInt(jsonObject.get("número_de_pedimento").toString()));
+		}
 		
 			/*for (Object obj : jsonObj) {*/
 				//JSONObject arObj = (JSONObject) obj;
@@ -355,7 +427,7 @@ public class UserController {
 				System.out.println( " PEDIMENT DATA LIST If");
 
 				Pedimento pedimento = new Pedimento();
-				pedimento.setNúmero_de_Pedimento(numero_de_pedimento);
+				pedimento.setNúmero_de_pedimento(numero_de_pedimento);
 				pedimento.setPatente_o_autorización(Integer.parseInt(patent));
 				pedimento.setClave_del_Tipo_de_Registro(500);
 				pedimento.setTipo_de_Movimiento(0);	
@@ -678,7 +750,7 @@ public class UserController {
 						Double.parseDouble(jsonObject.get("tasa_Contribución").toString()),
 						Integer.parseInt(jsonObject.get("clave_Tipo_Tasa").toString()));*/
 				tasas.setClave_del_Tipo_de_Registro(509);
-				tasas.setNúmero_Pedimento(Long.parseLong(jsonObject.get("número_de_pedimento").toString()));
+				tasas.setNúmerodepedimento(Long.parseLong(jsonObject.get("número_de_pedimento").toString()));
 				tasas.setClave_Tipo_Tasa(Integer.parseInt(jsonObject.get("clave_Tipo_Tasa").toString()));
 				tasas.setClave_Contribución(Integer.parseInt(jsonObject.get("clave_Contribución").toString()));
 				tasas.setTasa_Contribución(Double.parseDouble(jsonObject.get("tasa_Contribución").toString()));
@@ -701,7 +773,7 @@ public class UserController {
 				TasasNivelPartida tasas = new TasasNivelPartida();
 						
 				tasas.setClave_del_Tipo_de_Registro(556);
-				tasas.setNúmero_pedimento(Long.parseLong(jsonObject.get("número_pedimento").toString()));
+				tasas.setNúmerodepedimento(Long.parseLong(jsonObject.get("número_pedimento").toString()));
 				tasas.setFracción_Arancelaria(jsonObject.get("fracción_Arancelaria").toString());
 				tasas.setNúmero_Partida(Integer.parseInt(jsonObject.get("número_Partida").toString()));
 				tasas.setClave_Contribución_pagar(Integer.parseInt(jsonObject.get("clave_Contribución_pagar").toString()));
@@ -771,6 +843,25 @@ public class UserController {
 		List<? extends AuditBase> ls;
 		try {
 			ls = genericdao.getRowData(code, id,Class.forName(className));
+			
+			System.out.println("Ls :"+ls);
+			return ls;
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			
+		return null;
+	}
+	
+	@GetMapping("/getData")
+	public @ResponseBody List<? extends AuditBase> getData(@RequestParam("code") String code,@RequestParam("id") int id){
+		List<String> returnList = new ArrayList<String>();
+		System.out.println("Mapping : "+tableToClassMapping.getClass(code));
+		String className = tableToClassMapping.getClass(code);
+		List<? extends AuditBase> ls;
+		try {
+			ls = genericdao.getData(code,Class.forName(className),id);
 			
 			System.out.println("Ls :"+ls);
 			return ls;

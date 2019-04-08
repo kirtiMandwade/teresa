@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+
+	<div th:fragment="Transpote"
+		class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="transporte">
+		<div class="panel-group" id="accordion36">
+			<div>
+				<ul class="nav nav-tabs ng-scope">
+					<li class="active"><a data-toggle="tab"
+						href="/user/pedimento.html">Generales</a></li>
+					<li></li>
+					<li class=""><a href="/user/partidas.html">Partidas</a></li>
+					<li></li>
+					<li class=""><a data-toggle="tab" href="/user/contribuciones">Contribuciones</a></li>
+					<li></li>
+				</ul>
+				<div class="tab-content ng-scope">
+
+					<div id="tab36" class="tab-pane fade in active">
+
+						<div>
+
+							<div class="table-responsive">
+								<table id="tableId"
+									class="table table-striped table-advance table-hover">
+									<thead>
+										<tr>
+											<th>RFC DEL TRANSPORTISTA</th>
+											<th>CURP DEL TRANSPORTISTA</th>
+											<th>NOMBRE TRANSPORTISTA</th>
+											<th>PAÍS DEL MEDIO DE TRANSPORTE</th>
+											<th>IDENTIFICADOR DEL TRANSPORTE</th>
+											<th>TOTAL DE BULTOS</th>
+											<th>DOMICILIO FISCAL DEL TRANSPORTISTA</th>
+											<th>Accciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr
+											ng-repeat="data in deppedimento.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter: search">
+											<td>{{data.rfc_del_Transportista}}</td>
+											<td>{{data.nombre_Transportista}}</td>
+											<td>{{data.país_del_medio_de_Transporte}}</td>
+											<td>{{data.identificador_del_Transporte}}</td>
+												<td ng-click="edit(data,'formdata36','transporte')">edit</td>
+														<td ng-click="delete(data,'deppedimento')">delete</td>
+
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+							<hr></hr>
+						</div>
+
+						<div>
+							<form novalidate="" id="form36" name="form36"
+								class="ng-pristine ng-valid-pattern ng-valid-maxlength ng-invalid ng-invalid-required">
+								<h2></h2>
+								<br></br>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">CLAVE
+										DEL TIPO DE REGISTRO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-valid ng-valid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata36.clave_del_Tipo_de_Registro"
+											ng-disabled="true"
+											ng-init="formdata36.clave_del_Tipo_de_Registro=502"
+											name="clave_del_Tipo_de_Registro" type="number"
+											id="clave_del_Tipo_de_Registro" value="502" required=""
+											ng-pattern="/^[1-9][0-9]*$/" limit-to="3" maxlength="3"
+											disabled="disabled" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form36.clave_del_Tipo_de_Registro.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form36.clave_del_Tipo_de_Registro.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">NÚMERO
+										DE PEDIMENTO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata36.número_de_pedimento" ng-disabled="true"
+											name="número_de_Pedimento" type="number"
+											id="número_de_Pedimento" value="" required=""
+											ng-pattern="/^[9]{1}[0-9]{6}?$/" limit-to="7" maxlength="7"
+											data-tooltip-append-to-body="true"
+											data-tooltip="El primer dígito debe corresponder al último dígito del año en curso, mientras que los seis dígitos restantes son un número único de control asignado por el agente aduanal,apoderado aduanal o mandatario conservando los CEROS a la izquierda para que en conjunto sean siempre 7 dígitos. " />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6" style="color: red"
+											ng-show="form36.número_de_Pedimento.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form36.número_de_Pedimento.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">RFC
+										DEL TRANSPORTISTA</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											required="" ng-model="formdata36.rfc_del_Transportista"
+											ng-disabled="false" type="text" id="rfc_del_Transportista"
+											limit-to="13" name="rfc_del_Transportista" maxlength="13"
+											value="" ng-pattern="/^[^- ]+$/" />
+									</div>
+									<div class="form-group">
+										<div class="col-sm-6">
+											<input name="clave_formulario_principal" type="hidden"
+												id="clave_formulario_principal"
+												ng-model="formdata36.clave_formulario_principal"
+												class="ng-pristine ng-untouched ng-valid" />
+										</div>
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div style="color: red"
+											ng-show="form36.rfc_del_Transportista.$error.pattern"
+											class="ng-hide">This Field cannot be null or zero*</div>
+									</div>
+								</div>
+								<br></br>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">CURP
+										DEL TRANSPORTISTA</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											required="" ng-model="formdata36.curp_del_Transportista"
+											ng-disabled="false" type="text" id="curp_del_Transportista"
+											limit-to="18" name="curp_del_Transportista" maxlength="18"
+											value="" ng-pattern="/^[^- ]+$/" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div style="color: red"
+											ng-show="form36.curp_del_Transportista.$error.pattern"
+											class="ng-hide">This Field cannot be null or zero*</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">NOMBRE
+										TRANSPORTISTA</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength"
+											required="" ng-model="formdata36.nombre_Transportista"
+											ng-disabled="false" type="text" id="nombre_Transportista"
+											limit-to="120" name="nombre_Transportista" maxlength="120"
+											value="" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div style="color: red"
+											ng-show="form36.nombre_Transportista.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div style="color: red"
+											ng-show="form36.nombre_Transportista.$error.pattern"
+											class="ng-hide">This Field cannot be null or zero*</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">PAÍS
+										DEL MEDIO DE TRANSPORTE</label>
+									<div class="col-sm-6">
+										<select id="second-choice"
+											ng-model="formdata36.país_del_medio_de_Transporte"
+											required="required"
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+											<option value="? undefined:undefined ?"></option>
+											<option value="A1">A1</option>
+										</select>
+									</div>
+									<div class="col-sm-offset-8 col-sm-4"></div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">IDENTIFICADOR
+										DEL TRANSPORTE</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											required=""
+											ng-model="formdata36.identificador_del_Transporte"
+											ng-disabled="false" type="text"
+											id="identificador_del_Transporte" limit-to="30"
+											name="identificador_del_Transporte" maxlength="30" value=""
+											ng-pattern="/^[^-_;*']+$/" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div style="color: red"
+											ng-show="form36.identificador_del_Transporte.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div style="color: red"
+											ng-show="form36.identificador_del_Transporte.$error.pattern"
+											class="ng-hide">This Field cannot be null or zero*</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">TOTAL
+										DE BULTOS</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata36.total_de_Bultos" ng-disabled="false"
+											name="total_de_Bultos" type="number" id="total_de_Bultos"
+											value="" required="" ng-pattern="/^[1-9][0-9]*$/"
+											limit-to="5" maxlength="5" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form36.total_de_Bultos.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">DOMICILIO
+										FISCAL DEL TRANSPORTISTA</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength"
+											required=""
+											ng-model="formdata36.domicilio_fiscal_del_Transportista"
+											ng-disabled="false" type="text"
+											id="domicilio_fiscal_del_Transportista" limit-to="150"
+											name="domicilio_fiscal_del_Transportista" maxlength="150"
+											value="" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div style="color: red"
+											ng-show="form36.domicilio_fiscal_del_Transportista.$error.pattern"
+											class="ng-hide">This Field cannot be null or zero*</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<div class="col-lg-offset-2 col-lg-10">
+										<button ng-disabled="form36.$invalid"
+											class="btn btn-theme"
+											ng-click="isLock36=true;$event.preventDefault();save(formdata36,36,1,'formdata36','deppedimento','502','transporte','true')"
+											disabled="disabled">Guardar</button>
+										<button ng-click="dependentReturn()"
+											class="btn btn-theme buttonclass">Return back</button>
+									</div>
+								</div>
+							</form>
+
+							<!-- formgroup div end -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

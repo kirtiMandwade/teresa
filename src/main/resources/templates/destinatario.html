@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+
+	<div th:fragment="destinatario"
+		class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="destinatario">
+		<div class="panel-group" id="accordion9">
+			<div>
+				<ul class="nav nav-tabs ng-scope">
+					<li class="active"><a data-toggle="tab"
+						href="/user/pedimento.html">Generales</a></li>
+					<li></li>
+					<li class=""><a href="/user/partidas.html">Partidas</a></li>
+					<li></li>
+					<li class=""><a data-toggle="tab" href="/user/contribuciones">Contribuciones</a></li>
+					<li></li>
+				</ul>
+				<div class="tab-content ng-scope">
+
+					<div id="tab9" class="tab-pane fade active show in">
+						<div>
+							<div class="table-responsive">
+								<table id="tableId"
+									class="table table-striped table-advance table-hover">
+									<thead>
+										<tr>
+											<th>NOMBRE DESTINATARIO</th>
+											<th>Accciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr
+											ng-repeat="data in deppedimento.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter: search">
+											<td>{{data.nombre_destinatario}}</td>
+
+											<td ng-click="edit(data,'formdata9','destinatario')"><i
+												class="fa fa-pencil"></i></td>
+											<td ng-click="delete(data,'deppedimento')"><i
+												class="fa fa-trash-o "></i></td>
+
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+							<hr></hr>
+						</div>
+						<div>
+							<form novalidate="" id="form9" name="form9"
+								class="ng-pristine ng-valid-pattern ng-valid-maxlength ng-invalid ng-invalid-required">
+								<h2></h2>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">CLAVE
+										DEL TIPO DE REGISTRO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-valid ng-valid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata9.clave_del_Tipo_de_Registro"
+											ng-disabled="true"
+											ng-init="formdata9.clave_del_Tipo_de_Registro=520"
+											name="clave_del_Tipo_de_Registro" type="number"
+											id="clave_del_Tipo_de_Registro" value="520" required=""
+											ng-pattern="/^[1-9][0-9]*$/" limit-to="3" maxlength="3"
+											disabled="disabled" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form9.clave_del_Tipo_de_Registro.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form9.clave_del_Tipo_de_Registro.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">NÚMERO
+										PEDIMENTO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata9.número_de_pedimento" ng-disabled="false"
+											name="número_de_pedimento" type="number" id="número_de_pedimento"
+											value="" required="" ng-pattern="/^[9]{1}[0-9]{6}?$/"
+											limit-to="7" maxlength="7" data-tooltip-append-to-body="true"
+											data-tooltip="El primer dígito debe corresponder al último dígito del año en curso, mientras que los seis dígitos restantes son un número único de control asignado por el agente aduanal,apoderado aduanal o mandatario conservando los CEROS a la izquierda para que en conjunto sean siempre 7 dígitos. " />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6" style="color: red"
+											ng-show="form9.número_de_pedimento.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form9.número_de_pedimento.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">IDENTIFICACIÓN
+										FISCAL DESTINATARIO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength"
+											required=""
+											ng-model="formdata9.identificación_Fiscal_destinatario"
+											ng-disabled="false" type="text"
+											id="identificación_Fiscal_destinatario" limit-to="17"
+											name="identificación_Fiscal_destinatario" maxlength="17"
+											value="" />
+									</div>
+									<div class="form-group">
+										<div class="col-sm-6">
+											<input name="clave_formulario_principal" type="hidden"
+												id="clave_formulario_principal"
+												ng-model="formdata9.clave_formulario_principal"
+												class="ng-pristine ng-untouched ng-valid" />
+										</div>
+									</div>
+									<div class="col-sm-offset-8 col-sm-4"></div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">NOMBRE
+										DESTINATARIO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength"
+											required="" ng-model="formdata9.nombre_destinatario"
+											ng-disabled="false" type="text" id="nombre_destinatario"
+											limit-to="120" name="nombre_destinatario" maxlength="120"
+											value="" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div style="color: red"
+											ng-show="form9.nombre_destinatario.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div style="color: red"
+											ng-show="form9.nombre_destinatario.$error.pattern"
+											class="ng-hide">This Field cannot be null or zero*</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">CALLE
+										DOMICILIO DESTINATARIO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength"
+											required="" ng-model="formdata9.calle_domicilio_destinatario"
+											ng-disabled="false" type="text"
+											id="calle_domicilio_destinatario" limit-to="80"
+											name="calle_domicilio_destinatario" maxlength="80" value="" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div style="color: red"
+											ng-show="form9.calle_domicilio_destinatario.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div style="color: red"
+											ng-show="form9.calle_domicilio_destinatario.$error.pattern"
+											class="ng-hide">This Field cannot be null or zero*</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">NÚMERO
+										INTERIOR DOMICILIO DESTINATARIO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength"
+											required=""
+											ng-model="formdata9.número_interior_domicilio_Destinatario"
+											ng-disabled="false" type="text"
+											id="número_interior_domicilio_Destinatario" limit-to="10"
+											name="número_interior_domicilio_Destinatario" maxlength="10"
+											value="" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4"></div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">NÚMERO
+										EXTERIOR DOMICILIO DESTINATARIO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength"
+											required=""
+											ng-model="formdata9.número_exterior_domicilio_Destinatario"
+											ng-disabled="false" type="text"
+											id="número_exterior_domicilio_Destinatario" limit-to="10"
+											name="número_exterior_domicilio_Destinatario" maxlength="10"
+											value="" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div style="color: red"
+											ng-show="form9.número_exterior_domicilio_Destinatario.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div style="color: red"
+											ng-show="form9.número_exterior_domicilio_Destinatario.$error.pattern"
+											class="ng-hide">This Field cannot be null or zero*</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">CÓDIGO
+										POSTAL DOMICILIO DESTINATARIO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength"
+											required=""
+											ng-model="formdata9.código_postal_domicilio_Destinatario"
+											ng-disabled="false" type="text"
+											id="código_postal_domicilio_Destinatario" limit-to="10"
+											name="código_postal_domicilio_Destinatario" maxlength="10"
+											value="" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div style="color: red"
+											ng-show="form9.código_postal_domicilio_Destinatario.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div style="color: red"
+											ng-show="form9.código_postal_domicilio_Destinatario.$error.pattern"
+											class="ng-hide">This Field cannot be null or zero*</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">MUNI
+										CIUDAD DOMICILIO DESTINATARIO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength"
+											required=""
+											ng-model="formdata9.muni_ciudad_domicilio_Destinatario"
+											ng-disabled="false" type="text"
+											id="muni_ciudad_domicilio_Destinatario" limit-to="80"
+											name="muni_ciudad_domicilio_Destinatario" maxlength="80"
+											value="" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div style="color: red"
+											ng-show="form9.muni_ciudad_domicilio_Destinatario.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div style="color: red"
+											ng-show="form9.muni_ciudad_domicilio_Destinatario.$error.pattern"
+											class="ng-hide">This Field cannot be null or zero*</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">PAÍS
+										DOMICILIO DESTINATARIO</label>
+									<div class="col-sm-6">
+										<select id="second-choice"
+											ng-model="formdata9.país_domicilio_Destinatario"
+											required="required"
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+											<option value="? undefined:undefined ?"></option>
+											<option value="A1">A1</option>
+											<option value="A2">A2</option>
+											<option value="A4">A4</option>
+											<option value="A7">A7</option>
+											<option value="A8">A8</option>
+											<option value="AI">AI</option>
+											<option value="A9">A9</option>
+											<option value="B1">B1</option>
+											<option value="B2">B2</option>
+											<option value="B3">B3</option>
+											<option value="B4">B4</option>
+											<option value="AM">AM</option>
+											<option value="A0">A0</option>
+											<option value="B5">B5</option>
+											<option value="B6">B6</option>
+											<option value="AZ">AZ</option>
+											<option value="B7">B7</option>
+											<option value="B8">B8</option>
+											<option value="B9">B9</option>
+											<option value="C1">C1</option>
+											<option value="C2">C2</option>
+											<option value="C3">C3</option>
+											<option value="F9">F9</option>
+											<option value="C4">C4</option>
+											<option value="BY">BY</option>
+											<option value="C6">C6</option>
+											<option value="X7">X7</option>
+											<option value="C7">C7</option>
+											<option value="C8">C8</option>
+											<option value="C9">C9</option>
+											<option value="D1">D1</option>
+											<option value="A6">A6</option>
+											<option value="D2">D2</option>
+											<option value="D3">D3</option>
+											<option value="D4">D4</option>
+											<option value="F4">F4</option>
+											<option value="D6">D6</option>
+											<option value="D7">D7</option>
+											<option value="D8">D8</option>
+											<option value="D9">D9</option>
+											<option value="E1">E1</option>
+											<option value="F6">F6</option>
+											<option value="Z3">Z3</option>
+											<option value="F8">F8</option>
+											<option value="E2">E2</option>
+											<option value="E3">E3</option>
+											<option value="E4">E4</option>
+											<option value="E5">E5</option>
+											<option value="EU">EU</option>
+											<option value="E6">E6</option>
+											<option value="E7">E7</option>
+											<option value="E9">E9</option>
+											<option value="E8">E8</option>
+											<option value="F1">F1</option>
+											<option value="F2">F2</option>
+											<option value="HR">HR</option>
+											<option value="F3">F3</option>
+											<option value="D0">D0</option>
+											<option value="G1">G1</option>
+											<option value="V4">V4</option>
+											<option value="G2">G2</option>
+											<option value="G3">G3</option>
+											<option value="G4">G4</option>
+											<option value="G5">G5</option>
+											<option value="G6">G6</option>
+											<option value="ER">ER</option>
+											<option value="SI">SI</option>
+											<option value="G7">G7</option>
+											<option value="FM">FM</option>
+											<option value="G8">G8</option>
+											<option value="G0">G0</option>
+											<option value="G9">G9</option>
+											<option value="H1">H1</option>
+											<option value="H3">H3</option>
+											<option value="H4">H4</option>
+											<option value="H5">H5</option>
+											<option value="GZ">GZ</option>
+											<option value="H6">H6</option>
+											<option value="H7">H7</option>
+											<option value="GE">GE</option>
+											<option value="H8">H8</option>
+											<option value="GI">GI</option>
+											<option value="I1">I1</option>
+											<option value="I2">I2</option>
+											<option value="GL">GL</option>
+											<option value="I4">I4</option>
+											<option value="I5">I5</option>
+											<option value="I6">I6</option>
+											<option value="J1">J1</option>
+											<option value="I9">I9</option>
+											<option value="I8">I8</option>
+											<option value="I7">I7</option>
+											<option value="J2">J2</option>
+											<option value="J3">J3</option>
+											<option value="J5">J5</option>
+											<option value="J6">J6</option>
+											<option value="J7">J7</option>
+											<option value="J8">J8</option>
+											<option value="J9">J9</option>
+											<option value="K1">K1</option>
+											<option value="K2">K2</option>
+											<option value="K3">K3</option>
+											<option value="K4">K4</option>
+											<option value="HM">HM</option>
+											<option value="FK">FK</option>
+											<option value="MP">MP</option>
+											<option value="MH">MH</option>
+											<option value="SB">SB</option>
+											<option value="SJ">SJ</option>
+											<option value="TK">TK</option>
+											<option value="WF">WF</option>
+											<option value="K5">K5</option>
+											<option value="K6">K6</option>
+											<option value="K7">K7</option>
+											<option value="K9">K9</option>
+											<option value="L1">L1</option>
+											<option value="KZ">KZ</option>
+											<option value="L2">L2</option>
+											<option value="L0">L0</option>
+											<option value="L3">L3</option>
+											<option value="KG">KG</option>
+											<option value="L6">L6</option>
+											<option value="Y1">Y1</option>
+											<option value="L7">L7</option>
+											<option value="L8">L8</option>
+											<option value="L9">L9</option>
+											<option value="L5">L5</option>
+											<option value="Y2">Y2</option>
+											<option value="M0">M0</option>
+											<option value="M1">M1</option>
+											<option value="MK">MK</option>
+											<option value="M2">M2</option>
+											<option value="M3">M3</option>
+											<option value="M4">M4</option>
+											<option value="M5">M5</option>
+											<option value="M6">M6</option>
+											<option value="M7">M7</option>
+											<option value="M8">M8</option>
+											<option value="M9">M9</option>
+											<option value="N1">N1</option>
+											<option value="N2">N2</option>
+											<option value="N3">N3</option>
+											<option value="MD">MD</option>
+											<option value="N0">N0</option>
+											<option value="N4">N4</option>
+											<option value="N5">N5</option>
+											<option value="ME">ME</option>
+											<option value="N6">N6</option>
+											<option value="C5">C5</option>
+											<option value="P0">P0</option>
+											<option value="N7">N7</option>
+											<option value="N8">N8</option>
+											<option value="N9">N9</option>
+											<option value="P1">P1</option>
+											<option value="P2">P2</option>
+											<option value="P3">P3</option>
+											<option value="P4">P4</option>
+											<option value="P5">P5</option>
+											<option value="P6">P6</option>
+											<option value="NC">NC</option>
+											<option value="P9">P9</option>
+											<option value="Q2">Q2</option>
+											<option value="Q3">Q3</option>
+											<option value="J4">J4</option>
+											<option value="Z9">Z9</option>
+											<option value="Q7">Q7</option>
+											<option value="PW">PW</option>
+											<option value="PS">PS</option>
+											<option value="Q8">Q8</option>
+											<option value="P8">P8</option>
+											<option value="R1">R1</option>
+											<option value="R2">R2</option>
+											<option value="R3">R3</option>
+											<option value="R4">R4</option>
+											<option value="R5">R5</option>
+											<option value="R6">R6</option>
+											<option value="R7">R7</option>
+											<option value="R8">R8</option>
+											<option value="R9">R9</option>
+											<option value="CZ">CZ</option>
+											<option value="CF">CF</option>
+											<option value="L4">L4</option>
+											<option value="RS">RS</option>
+											<option value="S2">S2</option>
+											<option value="SK">SK</option>
+											<option value="X9">X9</option>
+											<option value="S6">S6</option>
+											<option value="S3">S3</option>
+											<option value="S5">S5</option>
+											<option value="RU">RU</option>
+											<option value="EH">EH</option>
+											<option value="S8">S8</option>
+											<option value="S9">S9</option>
+											<option value="T0">T0</option>
+											<option value="T1">T1</option>
+											<option value="T2">T2</option>
+											<option value="T3">T3</option>
+											<option value="T4">T4</option>
+											<option value="T5">T5</option>
+											<option value="T6">T6</option>
+											<option value="T7">T7</option>
+											<option value="T8">T8</option>
+											<option value="U1">U1</option>
+											<option value="U2">U2</option>
+											<option value="U3">U3</option>
+											<option value="U4">U4</option>
+											<option value="U5">U5</option>
+											<option value="U6">U6</option>
+											<option value="U7">U7</option>
+											<option value="U8">U8</option>
+											<option value="U9">U9</option>
+											<option value="V0">V0</option>
+											<option value="TJ">TJ</option>
+											<option value="V1">V1</option>
+											<option value="F7">F7</option>
+											<option value="V2">V2</option>
+											<option value="V3">V3</option>
+											<option value="TF">TF</option>
+											<option value="TP">TP</option>
+											<option value="V7">V7</option>
+											<option value="TO">TO</option>
+											<option value="W1">W1</option>
+											<option value="W2">W2</option>
+											<option value="W3">W3</option>
+											<option value="TM">TM</option>
+											<option value="W4">W4</option>
+											<option value="TV">TV</option>
+											<option value="UA">UA</option>
+											<option value="W5">W5</option>
+											<option value="W7">W7</option>
+											<option value="Y4">Y4</option>
+											<option value="Q1">Q1</option>
+											<option value="W8">W8</option>
+											<option value="W9">W9</option>
+											<option value="X2">X2</option>
+											<option value="X3">X3</option>
+											<option value="YE">YE</option>
+											<option value="X8">X8</option>
+											<option value="Z1">Z1</option>
+											<option value="S4">S4</option>
+											<option value="Z2">Z2</option>
+											<option value="NT">NT</option>
+										</select>
+									</div>
+									<div class="col-sm-offset-8 col-sm-4"></div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<div class="col-lg-offset-2 col-lg-10">
+										<button ng-disabled="isDisabled9 || form9.$invalid"
+											class="btn btn-theme"
+											ng-click="isLock9=true;$event.preventDefault();save(formdata9,9,1,'formdata9','deppedimento','520','destinatario','true')"
+											disabled="disabled">Guardar</button>
+										<button ng-click="dependentReturn()"
+											class="btn btn-theme buttonclass">Return back</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

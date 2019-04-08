@@ -16,7 +16,7 @@ public class Transporte extends AuditBase {
 	 private long id;
 	
 	private int Clave_del_Tipo_de_Registro;
-	private long  Número_de_Pedimento;
+	private long  número_de_pedimento;
 	private String  RFC_del_Transportista;
 	
 	private String CURP_del_Transportista;
@@ -47,13 +47,13 @@ public class Transporte extends AuditBase {
 		Clave_del_Tipo_de_Registro = clave_del_Tipo_de_Registro;
 	}
 	
-	public long getNúmero_de_Pedimento() {
-		return Número_de_Pedimento;
-	}
-	public void setNúmero_de_Pedimento(long número_de_Pedimento) {
-		Número_de_Pedimento = número_de_Pedimento;
-	}
 	
+	public long getNúmero_de_pedimento() {
+		return número_de_pedimento;
+	}
+	public void setNúmero_de_pedimento(long número_de_pedimento) {
+		this.número_de_pedimento = número_de_pedimento;
+	}
 	public String getRFC_del_Transportista() {
 		return RFC_del_Transportista;
 	}
@@ -100,7 +100,7 @@ public class Transporte extends AuditBase {
 	@Override
 	public String toString() {
 		return "Transporte [id=" + id + ", Clave_del_Tipo_de_Registro=" + Clave_del_Tipo_de_Registro
-				+ ", Número_de_Pedimento=" + Número_de_Pedimento + ", RFC_del_Transportista=" + RFC_del_Transportista
+				+ ", número_de_pedimento=" + número_de_pedimento + ", RFC_del_Transportista=" + RFC_del_Transportista
 				+ ", CURP_del_Transportista=" + CURP_del_Transportista + ", Nombre_Transportista="
 				+ Nombre_Transportista + ", País_del_medio_de_Transporte=" + País_del_medio_de_Transporte
 				+ ", Identificador_del_Transporte=" + Identificador_del_Transporte + ", Total_de_Bultos="

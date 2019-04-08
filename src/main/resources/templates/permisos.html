@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+
+	<div th:fragment="permisos"
+		class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="permisos">
+		<div class="panel-group" id="accordion36">
+			<div>
+				<ul class="nav nav-tabs ng-scope">
+					<li ><a data-toggle="tab"
+						href="/user/pedimento.html">Generales</a></li>
+					<li></li>
+					<li class="active"><a href="/user/partidas.html">Partidas</a></li>
+					<li></li>
+					<li class=""><a data-toggle="tab" href="/user/contribuciones">Contribuciones</a></li>
+					<li></li>
+				</ul>
+				<div class="tab-content ng-scope">
+
+					<div id="tab36" class="tab-pane fade in active">
+
+						<div>
+
+							<div class="table-responsive">
+								<table id="tableId"
+									class="table table-striped table-advance table-hover">
+									<thead>
+										<tr>
+											<th>CLAVE PERMISO</th>
+											<th>FIRMA DESCARGO</th>
+											<th>NÚMERO PERMISOS AUTORIZACIÓN</th>
+											<th>VALOR COMERCIAL DÓLARES</th>
+											<th>CANTIDAD MERCANCÍA UMTORUMC</th>
+											<th>Accciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr
+											ng-repeat="data in deppedimento.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter: search">
+											<td>{{data.clave_Permiso}}</td>
+											<td>{{data.firma_descargo}}</td>
+											<td>{{data.número_permisos_autorización}}</td>
+
+											<td>{{data.valor_comercial_dólares}}</td>
+											<td>{{data.fracción_Arancelaria}}</td>
+												<td ng-click="edit(data,'formdata30','permisos')">edit</td>
+														<td ng-click="delete(data,'deppedimento')">delete</td>
+
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+							<hr></hr>
+						</div>
+
+						<div>
+		<form novalidate="" id="form30" name="form30" class="ng-pristine ng-valid-pattern ng-valid-maxlength ng-invalid ng-invalid-required">
+   <h2></h2>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">CLAVE DEL TIPO DE REGISTRO</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-valid ng-valid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata30.clave_del_Tipo_de_Registro" ng-disabled="true" ng-init="formdata30.clave_del_Tipo_de_Registro=553" name="clave_del_Tipo_de_Registro" type="number" id="clave_del_Tipo_de_Registro" value="553" required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="3" maxlength="3" disabled="disabled" /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form30.clave_del_Tipo_de_Registro.$error.required">This Field is Required*</div>
+         <br></br>
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form30.clave_del_Tipo_de_Registro.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">NÚMERO PEDIMENTO</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata30.número_de_pedimento" ng-disabled="false" name="número_de_pedimento" type="number" id="número_de_pedimento" value="" required="" ng-pattern="/^[9]{1}[0-9]{6}?$/" limit-to="7" maxlength="7" data-tooltip-append-to-body="true" data-tooltip="El primer dígito debe corresponder al último dígito del año en curso, mientras que los seis dígitos restantes son un número único de control asignado por el agente aduanal,apoderado aduanal o mandatario conservando los CEROS a la izquierda para que en conjunto sean siempre 7 dígitos. " /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6" style="color:red" ng-show="form30.número_pedimento.$error.required">This Field is Required*</div>
+         <br></br>
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form30.número_pedimento.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">FRACCIÓN ARANCELARIA</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata30.fracción_Arancelaria" ng-disabled="false" type="text" id="fracción_Arancelaria" limit-to="8" name="fracción_Arancelaria" maxlength="8" value="" /></div>
+      <div class="form-group">
+         <div class="col-sm-6"><input name="clave_formulario_principal" type="hidden" id="clave_formulario_principal" ng-model="formdata30.clave_formulario_principal" class="ng-pristine ng-untouched ng-valid" /></div>
+      </div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div style="color:red" ng-show="form30.fracción_Arancelaria.$error.required">This Field is Required*</div>
+         <br></br>
+         <div style="color:red" ng-show="form30.fracción_Arancelaria.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">NÚMERO PARTIDA</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata30.número_Partida" ng-disabled="false" name="número_Partida" type="number" id="número_Partida" value="" required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="5" maxlength="5" /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6" style="color:red" ng-show="form30.número_Partida.$error.required">This Field is Required*</div>
+         <br></br>
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form30.número_Partida.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">CLAVE PERMISO</label>
+      <div class="col-sm-6">
+         <select id="second-choice" ng-model="formdata30.clave_Permiso" required="required" class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+            <option value="? undefined:undefined ?"></option>
+            <option value="CA">CA</option>
+            <option value="CM">CM</option>
+            <option value="CP">CP</option>
+            <option value="C1">C1</option>
+            <option value="C2">C2</option>
+            <option value="C6">C6</option>
+            <option value="M6">M6</option>
+            <option value="AV">AV</option>
+            <option value="IM">IM</option>
+            <option value="NM">NM</option>
+            <option value="A1">A1</option>
+            <option value="S1">S1</option>
+            <option value="S2">S2</option>
+            <option value="S3">S3</option>
+            <option value="S4">S4</option>
+            <option value="S5">S5</option>
+            <option value="S6">S6</option>
+            <option value="S7">S7</option>
+            <option value="T1">T1</option>
+            <option value="T2">T2</option>
+            <option value="T3">T3</option>
+            <option value="T5">T5</option>
+            <option value="T7">T7</option>
+            <option value="T8">T8</option>
+            <option value="T9">T9</option>
+            <option value="PF">PF</option>
+            <option value="D1">D1</option>
+            <option value="N1">N1</option>
+            <option value="N6">N6</option>
+            <option value="C1">C1</option>
+            <option value="AH">AH</option>
+            <option value="BA">BA</option>
+         </select>
+      </div>
+      <div class="col-sm-offset-8 col-sm-4"></div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">FIRMA DESCARGO</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata30.firma_descargo" ng-disabled="false" type="text" id="firma_descargo" limit-to="40" name="firma_descargo" maxlength="40" value="" /></div>
+      <div class="col-sm-offset-8 col-sm-4"></div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">NÚMERO PERMISOS AUTORIZACIÓN</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata30.número_permisos_autorización" ng-disabled="false" type="text" id="número_permisos_autorización" limit-to="50" name="número_permisos_autorización" maxlength="50" value="" /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div style="color:red" ng-show="form30.número_permisos_autorización.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">VALOR COMERCIAL DÓLARES</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata30.valor_comercial_dólares" ng-disabled="false" name="valor_comercial_dólares" type="number" id="valor_comercial_dólares" value="" required="" ng-pattern="/^\d{0,12}(\.\d{1,2})?$/" limit-to="15" maxlength="15" placeholder="El campo contiene hasta 12 enteros y hasta  2 fracciones." /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form30.valor_comercial_dólares.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">CANTIDAD MERCANCÍA UMTORUMC</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata30.cantidad_Mercancía_UMTorUMC" ng-disabled="false" name="cantidad_Mercancía_UMTorUMC" type="number" id="cantidad_Mercancía_UMTorUMC" value="" required="" ng-pattern="/^\d{0,13}(\.\d{1,5})?$/" limit-to="19" maxlength="19" placeholder="El campo contiene hasta 13 enteros y hasta  5 fracciones." /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form30.cantidad_Mercancía_UMTorUMC.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+									<div class="col-lg-offset-2 col-lg-10">
+										<button ng-disabled="isDisabled || form30.$invalid"
+											class="btn btn-theme"
+											ng-click="isLock30=true;$event.preventDefault();save(formdata30,30,1,'formdata30','deppedimento','553','permisos','true')"
+											disabled="disabled">Guardar</button>
+										<button class="btn btn-theme buttonclass" ng-click="dependentReturn()">
+											Return
+												back
+										</button>
+									</div>
+								</div>
+</form>
+							<!-- formgroup div end -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

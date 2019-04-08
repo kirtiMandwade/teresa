@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+
+	<div th:fragment="contenedores"
+		class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="contenedores">
+		<div class="panel-group" id="accordion4">
+			<div>
+				<ul class="nav nav-tabs ng-scope">
+					<li class="active"><a data-toggle="tab"
+						href="/user/pedimento.html">Generales</a></li>
+					<li></li>
+					<li class=""><a href="/user/partidas.html">Partidas</a></li>
+					<li></li>
+					<li class=""><a data-toggle="tab" href="/user/contribuciones">Contribuciones</a></li>
+					<li></li>
+				</ul>
+				<div class="tab-content ng-scope">
+					<div id="tab4" class="tab-pane fade in active">
+						<div>
+
+							<div class="table-responsive">
+								<table id="tableId"
+									class="table table-striped table-advance table-hover">
+									<thead>
+										<tr>
+											<th>NÚMERO DE CONTENEDOR</th>
+											<th>TIPO DE CONTENEDOR</th>
+											<th>Accciones</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr
+											ng-repeat="data in deppedimento.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter: search">
+											<td>{{data.número_de_Contenedor}}</td>
+											<td>{{data.tipo_de_Contenedor}}</td>
+											<td ng-click="edit(data,'formdata4','contenedores')"><i
+												class="fa fa-pencil"></i></td>
+											<td ng-click="delete(data,'deppedimento')"><i
+												class="fa fa-trash-o "></i></td>
+
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<hr></hr>
+						</div>
+						<div>
+							<form novalidate="" id="form4" name="form4"
+								class="ng-pristine ng-valid-pattern ng-valid-maxlength ng-invalid ng-invalid-required">
+								<h2></h2>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">CLAVE
+										DEL TIPO DE REGISTRO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-valid ng-valid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata4.clave_del_Tipo_de_Registro"
+											ng-disabled="true"
+											ng-init="formdata4.clave_del_Tipo_de_Registro=504"
+											name="clave_del_Tipo_de_Registro" type="number"
+											id="clave_del_Tipo_de_Registro" value="504" required=""
+											ng-pattern="/^[1-9][0-9]*$/" limit-to="3" maxlength="3"
+											disabled="disabled" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form4.clave_del_Tipo_de_Registro.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form4.clave_del_Tipo_de_Registro.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">NÚMERO
+										DE PEDIMENTO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata4.número_de_Pedimento" ng-disabled="false"
+											name="número_de_Pedimento" type="number"
+											id="número_de_Pedimento" value="" required=""
+											ng-pattern="/^[9]{1}[0-9]{6}?$/" limit-to="7" maxlength="7"
+											data-tooltip-append-to-body="true"
+											data-tooltip="El primer dígito debe corresponder al último dígito del año en curso, mientras que los seis dígitos restantes son un número único de control asignado por el agente aduanal,apoderado aduanal o mandatario conservando los CEROS a la izquierda para que en conjunto sean siempre 7 dígitos. " />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6" style="color: red"
+											ng-show="form4.número_de_Pedimento.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form4.número_de_Pedimento.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">NÚMERO
+										DE CONTENEDOR</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength"
+											required="" ng-model="formdata4.número_de_Contenedor"
+											ng-disabled="false" type="text" id="número_de_Contenedor"
+											limit-to="12" name="número_de_Contenedor" maxlength="12"
+											value="" />
+									</div>
+									<div class="form-group">
+										<div class="col-sm-6">
+											<input name="clave_formulario_principal" type="hidden"
+												id="clave_formulario_principal"
+												ng-model="formdata4.clave_formulario_principal"
+												class="ng-pristine ng-untouched ng-valid" />
+										</div>
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div style="color: red"
+											ng-show="form4.número_de_Contenedor.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div style="color: red"
+											ng-show="form4.número_de_Contenedor.$error.pattern"
+											class="ng-hide">This Field cannot be null or zero*</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">TIPO
+										DE CONTENEDOR</label>
+									<div class="col-sm-6">
+										<select id="second-choice"
+											ng-model="formdata4.tipo_de_Contenedor" required="required"
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+											<option value="? undefined:undefined ?"></option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+
+
+										</select>
+									</div>
+									<div class="col-sm-offset-8 col-sm-4"></div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<div class="col-lg-offset-2 col-lg-10">
+										<button ng-disabled="isDisabled4 || form4.$invalid"
+											class="btn btn-theme"
+											ng-click="isLock4=true;$event.preventDefault();save(formdata4,4,1,'formdata4','deppedimento','503','contenedores','true')"
+											disabled="disabled">Guardar</button>
+										<button ng-click="dependentReturn()"
+											class="btn btn-theme buttonclass">Return back</button>
+									</div>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

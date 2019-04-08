@@ -1,7 +1,5 @@
 package com.formapp.model.mysql;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +16,9 @@ public class TasasNivelPartida extends AuditBase {
 	 private long id;
 	
 	private int clave_del_Tipo_de_Registro; 
-	private long número_pedimento; 
+	
+	@Column(name = "número_de_Pedimento")
+	private long númerodepedimento;
 	private String fracción_Arancelaria  ;
 	private int número_Partida;
 	
@@ -26,10 +26,6 @@ public class TasasNivelPartida extends AuditBase {
 	private double tasa_Contribución;
 
 	private int tipo_tasa_aplicable ;
-
-	public TasasNivelPartida() {
-		
-	}
 
 	public long getId() {
 		return id;
@@ -39,7 +35,6 @@ public class TasasNivelPartida extends AuditBase {
 		this.id = id;
 	}
 
-	
 	public int getClave_del_Tipo_de_Registro() {
 		return clave_del_Tipo_de_Registro;
 	}
@@ -48,12 +43,12 @@ public class TasasNivelPartida extends AuditBase {
 		this.clave_del_Tipo_de_Registro = clave_del_Tipo_de_Registro;
 	}
 
-	public long getNúmero_pedimento() {
-		return número_pedimento;
+	public long getNúmerodepedimento() {
+		return númerodepedimento;
 	}
 
-	public void setNúmero_pedimento(long número_pedimento) {
-		this.número_pedimento = número_pedimento;
+	public void setNúmerodepedimento(long númerodepedimento) {
+		this.númerodepedimento = númerodepedimento;
 	}
 
 	public String getFracción_Arancelaria() {
@@ -96,20 +91,11 @@ public class TasasNivelPartida extends AuditBase {
 		this.tipo_tasa_aplicable = tipo_tasa_aplicable;
 	}
 
-	
-	
 	@Override
 	public String toString() {
-		return "TasasNivelPartida [id=" + id + ", clave_del_Tipo_de_Registro=" + clave_del_Tipo_de_Registro + ", número_pedimento="
-				+ número_pedimento + ", fracción_Arancelaria=" + fracción_Arancelaria + ", número_Partida="
-				+ número_Partida + ", clave_Contribución_pagar=" + clave_Contribución_pagar + ", tasa_Contribución="
-				+ tasa_Contribución + ", tipo_tasa_aplicable=" + tipo_tasa_aplicable + "]";
+		return "TasasNivelPartida [id=" + id + ", clave_del_Tipo_de_Registro=" + clave_del_Tipo_de_Registro
+				+ ", númerodepedimento=" + númerodepedimento + ", fracción_Arancelaria=" + fracción_Arancelaria
+				+ ", número_Partida=" + número_Partida + ", clave_Contribución_pagar=" + clave_Contribución_pagar
+				+ ", tasa_Contribución=" + tasa_Contribución + ", tipo_tasa_aplicable=" + tipo_tasa_aplicable + "]";
 	}
-	
-	
-	
-	
-	
-	
-
 }

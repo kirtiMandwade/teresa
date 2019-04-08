@@ -16,33 +16,30 @@ public class ObservacionesNivelPartida extends AuditBase {
 	 private long id;
 	
 	private int clave_del_Tipo_de_Registro; 
-	private long número_pedimento; 
+	private long número_de_pedimento; 
 	private String fracción_Arancelaria  ;
 	private int número_Partida;
 	
 	private int secuencia_Observaciones  ;
 	@Column(length=120)
 	private String observaciones  ;
-	public ObservacionesNivelPartida() {
-	
-	}
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	public int getclave_del_Tipo_de_Registro() {
+	public int getClave_del_Tipo_de_Registro() {
 		return clave_del_Tipo_de_Registro;
 	}
-	public void setclave_del_Tipo_de_Registro(int clave_del_Tipo_de_Registro) {
+	public void setClave_del_Tipo_de_Registro(int clave_del_Tipo_de_Registro) {
 		this.clave_del_Tipo_de_Registro = clave_del_Tipo_de_Registro;
 	}
-	public long getNúmero_pedimento() {
-		return número_pedimento;
+	public long getNúmero_de_pedimento() {
+		return número_de_pedimento;
 	}
-	public void setNúmero_pedimento(long número_pedimento) {
-		this.número_pedimento = número_pedimento;
+	public void setNúmero_de_pedimento(long número_de_pedimento) {
+		this.número_de_pedimento = número_de_pedimento;
 	}
 	public String getFracción_Arancelaria() {
 		return fracción_Arancelaria;
@@ -68,21 +65,12 @@ public class ObservacionesNivelPartida extends AuditBase {
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
 	}
-	
-	
 	@Override
 	public String toString() {
 		return "ObservacionesNivelPartida [id=" + id + ", clave_del_Tipo_de_Registro=" + clave_del_Tipo_de_Registro
-				+ ", número_pedimento=" + número_pedimento + ", fracción_Arancelaria=" + fracción_Arancelaria
+				+ ", número_de_pedimento=" + número_de_pedimento + ", fracción_Arancelaria=" + fracción_Arancelaria
 				+ ", número_Partida=" + número_Partida + ", secuencia_Observaciones=" + secuencia_Observaciones
 				+ ", observaciones=" + observaciones + "]";
 	}
-	
-	
-	
-	
-	
-
-	
 
 }

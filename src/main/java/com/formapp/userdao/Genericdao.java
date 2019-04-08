@@ -43,7 +43,8 @@ public class Genericdao {
 	   }*/
 
 		public Object create( Object entity ){
-		em.persist(entity);
+		
+		em.persist(em.contains(entity) ? entity : em.merge(entity));
 		em.flush();
 		return entity;
 		
@@ -195,6 +196,16 @@ public class Genericdao {
 		
 	      query.setParameter("rowId",rowId);
 	      List<AuditBase> rowList = query.getResultList();
+	      return rowList;
+	}
+	
+	public List<AuditBase> getData(String code,Class mappingClass,int id) {
+		 String queryString ="Select * from `"+code +"` where número_de_pedimento=:id ";
+		 Query query= em.createNativeQuery(queryString,mappingClass);
+	      query.setParameter("id",id);
+
+	      List<AuditBase> rowList = query.getResultList();
+
 	      return rowList;
 	}
 

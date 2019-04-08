@@ -16,7 +16,7 @@ public class Facturas  extends AuditBase{
 	 private long id;
 	
 	private int Clave_del_Tipo_de_Registro; 
-	private long  Número_de_Pedimento;
+	private long  número_de_pedimento;
 	Date Fecha_de_facturación;
 	private String Número_de_Factura_acuse_de_valor_o_CFDI;
 	private String Término_de_Facturación;
@@ -45,11 +45,12 @@ public class Facturas  extends AuditBase{
 	public void setClave_del_Tipo_de_Registro(int clave_del_Tipo_de_Registro) {
 		Clave_del_Tipo_de_Registro = clave_del_Tipo_de_Registro;
 	}
-	public long getNúmero_de_Pedimento() {
-		return Número_de_Pedimento;
+	
+	public long getNúmero_de_pedimento() {
+		return número_de_pedimento;
 	}
-	public void setNúmero_de_Pedimento(long número_de_Pedimento) {
-		Número_de_Pedimento = número_de_Pedimento;
+	public void setNúmero_de_pedimento(long número_de_pedimento) {
+		this.número_de_pedimento = número_de_pedimento;
 	}
 	public Date getFecha_de_facturación() {
 		return Fecha_de_facturación;
@@ -149,6 +150,28 @@ public class Facturas  extends AuditBase{
 	}
 	public Facturas() {
 		
+	}
+	@Override
+	public String toString() {
+		return "Facturas [id=" + id + ", Clave_del_Tipo_de_Registro=" + Clave_del_Tipo_de_Registro
+				+ ", número_de_pedimento=" + número_de_pedimento + ", Fecha_de_facturación=" + Fecha_de_facturación
+				+ ", Número_de_Factura_acuse_de_valor_o_CFDI=" + Número_de_Factura_acuse_de_valor_o_CFDI
+				+ ", Término_de_Facturación=" + Término_de_Facturación + ", Moneda_de_Facturación="
+				+ Moneda_de_Facturación + ", Valor_Total_de_las_Mercancías_en_Dólares="
+				+ Valor_Total_de_las_Mercancías_en_Dólares + ", Valor_Total_de_las_Mercancías_en_facturaciónl="
+				+ Valor_Total_de_las_Mercancías_en_facturaciónl + ", Pais_de_Facturación=" + Pais_de_Facturación
+				+ ", Entidad_Federativa_de_Facturación=" + Entidad_Federativa_de_Facturación
+				+ ", Identificación_Fiscal_del_Proveedor_o_Comprador=" + Identificación_Fiscal_del_Proveedor_o_Comprador
+				+ ", Nombre_del_Proveedor_o_Comprador=" + Nombre_del_Proveedor_o_Comprador
+				+ ", Calle_del_domicilio_del_Proveedor_o_Comprador=" + Calle_del_domicilio_del_Proveedor_o_Comprador
+				+ ", Número_interior_del_domicilio_del_Proveedor_o_Comprador="
+				+ Número_interior_del_domicilio_del_Proveedor_o_Comprador
+				+ ", Número_exterior_del_domicilio_del_Proveedor_o_Comprador="
+				+ Número_exterior_del_domicilio_del_Proveedor_o_Comprador
+				+ ", Código_postal_del_domicilio_del_Proveedor_o_Comprador="
+				+ Código_postal_del_domicilio_del_Proveedor_o_Comprador
+				+ ", Municipio_del_domicilio_del_Proveedor_o_Comprador="
+				+ Municipio_del_domicilio_del_Proveedor_o_Comprador + "]";
 	}  
 
 

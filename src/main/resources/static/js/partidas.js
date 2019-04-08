@@ -1,4 +1,5 @@
-	var app = angular.module('myapp', [ 'ui.bootstrap' ]);
+
+var app = angular.module('myapp', [ 'ui.bootstrap' ]);
 app.config(['$compileProvider', function ($compileProvider) {
     $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
 }]);
@@ -14,18 +15,18 @@ app
 						'$sce',
 						function($scope,$window, $timeout, $http, $compile,$filter,
 								$sce) {
-							
+							$scope.número_de_pedimento=0;
 							$scope.gensuccess = false;
 							$scope.pedimento = [];
 							$scope.one = true;
 							$scope.loaded = false;
 							$scope.two = false;
-							$scope.selectedPedimento = [];
-							$scope.arrMenu = [];
-							$scope.formdata = {};
-							$scope.currentForm = {};
+							$scope.valor = false;
+							$scope.deppedimento = [];
+							$scope.formdata28 = {};
+							$scope.formdata36 = {};
 							$scope.user = "User!";
-							$scope.formDatas = [];
+							$scope.tabDisabled = true;
 							$scope.dependencyData = [ {} ];
 							$scope.viewby = 10;
 							$scope.totalItems = 0;
@@ -34,7 +35,24 @@ app
 							$scope.maxSize = 5; // Number of pager buttons to
 												// show
 
-							
+//							$http
+//							.get("/user/getNumero")
+//							.then(
+//									function(response) {
+//										console.log("numero",
+//												response);
+//										$scope.número_de_pedimento = response.data;
+//										
+//
+//									},
+//									function(response) { // error
+//										console
+//												.log("Error: "
+//														+ response.status
+//														+ " : "
+//														+ response.data);
+//									});
+
 							$scope.download=function(res){
 								
 								 var data = res.divData,
@@ -43,8 +61,30 @@ app
 							    $scope.fileUrl = url.createObjectURL(blob);
 							    $scope.filename=res.filename;
 							}
+							$scope.map={
+									"formdata28":$scope.formdata28,
+									"formdata11":$scope.formdata11,
+									"formdata23":$scope.formdata23,
+									"formdata30":$scope.formdata30,
+									"formdata21":$scope.formdata21,
+									"formdata37":$scope.formdata37,
+									"formdata25":$scope.formdata25
+									
+							};
 							
-							$scope.tipoPedimento = [ 'NA', 'Pedimento  Normal',
+							$scope.view={
+									'one':$scope.one,
+									'two':$scope.two,
+									'valor':$scope.valor,
+									'mercancios':$scope.mercancios,
+									'permisos':$scope.permisos,
+									'identificadores':$scope.identificadores,
+									'nivelpartida':$scope.nivelpartida,
+
+									'obnivelpartida':$scope.obnivelpartida
+									
+							};
+						$scope.tipoPedimento = [ 'NA', 'Pedimento  Normal',
 									'Desistimiento o Eliminación',
 									'De la Industria Automotriz',
 									'Pedimento Complementario',
@@ -84,13 +124,167 @@ app
 
 							};
 
-							$scope.showDiv = function() {
+							$scope.addPedimento = function() {
 								console.log(" in showdiv function");
-								$scope.formParentdiv = true;
-								$scope.tabDiv = false;
+								$scope.one = false;
+								$scope.two = true;
+							};
+							
+							$scope.show = function(name,list,code,flag,clear) {
+								console.log(" in showdiv function");
+								
+								
+								$scope.toggle(flag);
+								if(clear=='true'){
+								$scope[name]={};
+								$scope[name].clave_del_Tipo_de_Registro=code;
+								$scope[name].número_de_pedimento=$scope.número_de_pedimento;
+
+							
+								}
+								
+								  $http({
+										url : '/user/getData',
+										method : 'GET',
+								params : {
+									code : code,
+									id:$scope.número_de_pedimento
+								},
+										headers : {
+											"Content-Type" : "application/json"
+										}
+
+									}).success(function(response) {
+
+										console.log("pedimento data ",
+												response);
+										$scope[list] = response;
+										$scope.totalItems = $scope[list].length;
+										$scope.loaded = true;
+									}).error(function(error) {
+										console
+										.log("Error: "
+												+ response.status
+												+ " : "
+												+ response.data);									});
+													
 
 							};
+							
+							
+							
+							$scope.edit = function(data,formname,flag) {
+								
+//								$scope.one = false;
+//								$scope.two = true;
+								$scope[formname]=data;
+								$scope.toggle(flag);
 
+							};
+							
+							$scope.toggle=function(flag){
+						        angular.forEach($scope.view, function (value, key) {
+						        	if(flag==key){
+						        		$scope[key]=true
+						        	}else{
+						        		$scope[key]=false;
+
+						        	}
+						        	
+						        })
+
+							}
+							
+							
+							
+							$scope.delete = function(data,list) {
+								console.log(" in showdiv function"+data);
+								
+								
+								 var index = $scope[list].indexOf(data);
+								 $scope[list].splice(index, 1);  
+								  var json = angular.toJson(data );
+
+								  $http({
+										url : '/user/deleteData',
+										method : 'DELETE',
+										data : json,
+								params : {
+									managerid : 1
+								},
+										headers : {
+											"Content-Type" : "application/json"
+										}
+
+									}).success(function(response) {
+
+										
+									}).error(function(error) {
+										$scope.error = error;
+									});
+
+
+															};
+															
+															$scope.deleteDepen = function(data) {
+																console.log(" in showdiv function"+data);
+																
+																
+																 var index = $scope.deppedimento.indexOf(data);
+																  $scope.deppedimento.splice(index, 1);  
+																  
+																  $http({
+																		url : '/user/delete/generals',
+																		method : 'DELETE',
+																		data : data,
+																		headers : {
+																			"Content-Type" : "application/json"
+																		}
+
+																	}).success(function(response) {
+
+																		$scope.response = "M File Generated";
+																		$scope.gensuccess = true;
+																		$scope.download(response);
+																	}).error(function(error) {
+																		$scope.error = error;
+																	});
+
+
+																							};
+							$scope.return = function() {
+								console.log(" in showdiv function");
+								$scope.one = true;
+								$scope.two = false;
+								$scope.formdata28 = {};
+
+								$http
+										.get("/user/getPartidasData")
+										.then(
+												function(response) {
+													console.log("pedimento data ",
+															response);
+													$scope.pedimento = response.data;
+													$scope.totalItems = $scope.pedimento.length;
+													$scope.loaded = true;
+
+												},
+												function(response) { // error
+													console
+															.log("Error: "
+																	+ response.status
+																	+ " : "
+																	+ response.data);
+												});
+
+
+							};
+							$scope.dependentReturn = function() {
+								console.log(" in showdiv function");
+$scope.toggle('two');							};
+
+							
+							
 							$http
 									.get("/user/getPartidasData")
 									.then(
@@ -110,407 +304,15 @@ app
 																+ response.data);
 											});
 
-							$scope.editTableData = function(id, formCode,
-									itemid) {
-								console.log("formData ", id);
-								var modelName = 'formdata' + id;
-								$scope[modelName] = {};
-								console.log("$scope.formData ",
-										$scope[modelName]);
-
-								$http({
-									method : "GET",
-									url : "/user/getRow/",
-									params : {
-										code : formCode,
-										id : itemid
-									}
-								})
-										.then(
-												function mySuccess(response) {
-
-													console.log("reponse ",
-															response);
-													$scope[modelName] = response.data[0];
-													console
-															.log(
-																	"success $scope.rowData",
-																	$scope[modelName]);
-
-												},
-												function myError(response) {
-													console.log("error ",
-															response);
-												});
-
-							};
-
-							$scope.deleteTableData = function(formCode, itemid) {
-
-								$http({
-									method : "GET",
-									url : "/user/deleteRow/",
-									params : {
-										code : formCode,
-										id : itemid
-									}
-								}).then(function mySuccess(response) {
-
-									console.log("reponse ", response);
-
-								}, function myError(response) {
-									console.log("error ", response);
-								});
-
-							};
-							$scope.getPedimentoTableData = function(iname) {
-								$scope.dependencyData = [ {} ];
-								document.getElementById("peditableData").innerHTML = "";
-
-								$scope.one = false;
-								$scope.two = true;
-								$scope.success = false;
-								$http
-										.get("/user/getPedimentoTable/" + iname)
-										.then(
-												function(response) {
-													console.log(response);
-													$scope.arrForms = response.data.divData;
-													var fulldiv = angular
-															.element($scope.arrForms);
-
-													var compiledDiv = $compile(
-															fulldiv)($scope);
-
-													var target = document
-															.getElementById('peditableData');
-													angular
-															.element(target)
-															.append(compiledDiv);
-
-												})
-
-							}
-
-							$scope.showMessage = function(iname) {
-								document.getElementById("userform").innerHTML = "";
-								$scope.one = true;
-								$scope.two = false;
-								$scope.success = false;
-								$http
-										.get("/user/getForms/" + iname)
-										.then(
-												function(response) {
-													console.log(response);
-													$scope.arrForms = response.data.divData;
-													var fulldiv = angular
-															.element($scope.arrForms);
-
-													var compiledDiv = $compile(
-															fulldiv)($scope);
-
-													var target = document
-															.getElementById('userform');
-													angular
-															.element(target)
-															.append(compiledDiv);
-
-												})
-
-							};
-
-							$scope.getSelected = function() {
-								var ar = $scope.pedimento
-										.filter(function(value) {
-											if (value.checked == 1) {
-												return true;
-											} else {
-												return false;
-											}
-										});
-
-								console.log("get selected ", ar);
-								return ar;
-							};
-
-							$scope.generateMfile = function() {
-								var arrgen = $scope.getSelected();
-								// $scope.arrgen.concat({"momento":$scope.tabledata});
-								console.log("mfile data ", arrgen);
-
-								$http({
-									url : '/user/generateMfile',
-									dataType : 'string',
-									method : 'POST',
-									data : JSON.stringify(arrgen),
-									headers : {
-										"Content-Type" : "application/json"
-									}
-
-								}).success(function(response) {
-
-									$scope.response = "M File Generated";
-									$scope.gensuccess = true;
-									$scope.download(response);
-								}).error(function(error) {
-									$scope.error = error;
-								});
-
-							};
-
-							$scope.showOne = function(iname) {
-								$scope.success = false;
-								console.log("showOne");
-								$scope.one = true;
-								$scope.formdata = {};
-								$scope.currentForm = {};
-								document.getElementById("userform").innerHTML = "";
-
-								$scope.currentForm = $filter('filter')(
-										$scope.arrMenu, {
-											formid : "" + iname
-										})[0];
-
-								angular
-										.forEach(
-												$scope.currentForm.fields,
-												function(item, index) {
-													$scope.formdata[item.name
-															.split(" ")
-															.join("")] = item.defaultValue;
-
-												});
-
-								console
-										.log("formfields-----"
-												+ $scope.formdata)
-								angular
-										.forEach(
-												$scope.currentForm.fields,
-												function(item, index) {
-													var newLable = angular
-															.element('<div class="col-sm-2" ></div><label class="col-sm-2 control-label" for="keyofrecord">'
-																	+ item.name
-																	+ '</label>');
-
-													if (item.type.toLowerCase() == 'select') {
-
-														var newEle = angular
-																.element('<div class="col-sm-8"><select id="second-choice" ng-model="formdata.'
-																		+ item.name
-																				.split(
-																						" ")
-																				.join(
-																						"")
-																		+ '" required="required" class="form-control" ></select>');
-														var target = document
-																.getElementById('#userform');
-														angular
-																.element(target)
-																.append(
-																		newLable);
-														angular.element(target)
-																.append(newEle);
-
-														$http
-																.get(
-																		"/user/getAppendiceRel/"
-																				+ item.appendiceData.name)
-																.then(
-																		function(
-																				response) {
-																			console
-																					.log(response);
-																			$scope.arrAppendice = response.data;
-																			console
-																					.log($scope.arrAppendice);
-
-																			angular
-																					.forEach(
-																							$scope.arrAppendice,
-																							function(
-																									aitem,
-																									index) {
-																								console
-																										.log("***"
-																												+ item)
-																								console
-																										.log(aitem[item.appendiceData.textCol]);
-																								var firstDynamicVal = aitem[item.appendiceData.textCol];
-
-																								var newEle = angular
-																										.element('<option value="'
-																												+ aitem[item.appendiceData.valueCol[0]]
-																												+ aitem[item.appendiceData.valueCol[1]]
-																												+ '">'
-																												+ firstDynamicVal
-																												+ '</option>');
-
-																								var target = document
-																										.getElementById('second-choice');
-																								angular
-																										.element(
-																												target)
-																										.append(
-																												newEle);
-																							})
-																		});
-
-													} else if (item.type
-															.toLowerCase() == 'number') {
-														var newEle = angular
-																.element('<div class="col-sm-8"><input  valid-number ng-model="formdata.'
-																		+ item.name
-																				.split(
-																						" ")
-																				.join(
-																						"")
-																		+ '" ng-disabled='
-																		+ item.isDisabled
-																		+ ' type="'
-																		+ item.type
-																		+ '" id="'
-																		+ item.name
-																		+ '" limit-to="'
-																		+ item.length
-																		+ '" name="'
-																		+ item.name
-																		+ '"  maxlength="'
-																		+ item.length
-																		+ '"  value="'
-																		+ item.defaultValue
-																		+ '" class='
-																		+ '"form-control"'
-																		+ '></input></div>');
-
-													} else
-														var newEle = angular
-																.element('<div class="col-sm-8"><input   ng-model="formdata.'
-																		+ item.name
-																				.split(
-																						" ")
-																				.join(
-																						"")
-																		+ '" ng-disabled='
-																		+ item.isDisabled
-																		+ ' type="'
-																		+ item.type
-																		+ '" id="'
-																		+ item.name
-																		+ '" name="'
-																		+ item.name
-																		+ '"  maxlength="'
-																		+ item.length
-																		+ '" value="'
-																		+ item.defaultValue
-																		+ '" class='
-																		+ '"form-control"'
-																		+ '></input></div>');
-
-													var compiledVar = $compile(
-															newEle)($scope);
-
-													var target = document
-															.getElementById('userform');
-
-													angular.element(target)
-															.append(newLable);
-													angular
-															.element(target)
-															.append(compiledVar);
-
-													// $scope.formdata.KeyofRecord=501;
-
-												})
-
-							}
-
-							$http
-									.get("/user/getMenu")
-									.then(
-											function(response) {
-												console.log(response);
-												$scope.arrMenu = response.data;
-												console.log("MENU DATA ",
-														$scope.arrMenu);
-
-												angular
-														.forEach(
-																$scope.arrMenu,
-																function(item,
-																		index) {
-																	var newEle = angular
-																			.element('<li class="mt"><a href="#"ng-click="getPedimentoTableData('
-																					+ index
-																					+ ')">'
-																					+ '<span>'
-																					+ item.name
-																					+ '</span>'
-																					+ '</a></li>');
-																	var compiledVar = $compile(
-																			newEle)
-																			(
-																					$scope);
-
-																	var target = document
-																			.getElementById('nav-accordion');
-																	angular
-																			.element(
-																					target)
-																			.append(
-																					compiledVar);
-																})
-											});
-
-							/*
-							 * $scope.save = function() {
-							 *  // console.log(JSON.stringify($scope.formData));
-							 * 
-							 * $http({ url : '/user/save', dataType : 'string',
-							 * method : 'POST', data :
-							 * JSON.stringify($scope.formDatas), headers : {
-							 * "Content-Type" : "application/json" }
-							 *  }) .success( function(response) { $scope.one =
-							 * false; $scope.response = "Data Saved
-							 * Successfully";
-							 * 
-							 * 
-							 * console.log("data save "+$scope.formdata);
-							 * $timeout(window.location.reload(), 400000);
-							 * //window.location.reload(); $scope.success =
-							 * true;
-							 * 
-							 * }).error(function(error) { $scope.error = error;
-							 * });
-							 *  };
-							 */
-
-							/*
-							 * $scope.save = function(itemid,event) {
-							 * //$scope.disable=true; console.log("data save
-							 * "+JSON.stringify(itemid)); $http({ url :
-							 * '/user/save', dataType : 'string', method :
-							 * 'POST', data : JSON.stringify(itemid), headers : {
-							 * "Content-Type" : "application/json" }
-							 *  }) .success( function(response) { //$scope.one =
-							 * false; $scope.response = "Data Saved
-							 * Successfully";
-							 * 
-							 * event.stopPropagation(); //console.log("data save
-							 * "+$scope.formdata); //
-							 * $timeout(window.location.reload(), 400000);
-							 * //window.location.reload(); $scope.success =
-							 * true;
-							 * 
-							 * }).error(function(error) { $scope.error = error;
-							 * });
-							 * 
-							 *  };
-							 */
-
-							$scope.save = function(itemid, formid, managerid) {
+							
+							
+							$scope.save = function(itemid, formid, managerid,formname,list,code,flag,clear) {
 								$scope.depObj = {};
-
+								
+								if(code=='551'){
+									$scope.número_de_pedimento=itemid.número_de_pedimento;
+								}
+								
 								$http({
 									method : "GET",
 									url : "/user/getParentFormid/",
@@ -529,13 +331,14 @@ app
 															});
 													console
 															.log(itemid.clave_formulario_principal);
+													  var json = angular.toJson(itemid );
+
 													$http(
 															{
 																url : '/user/save',
 																dataType : 'string',
 																method : 'POST',
-																data : JSON
-																		.stringify(itemid),
+																data : json,
 																params : {
 																	formid : formid,
 																	managerid : managerid
@@ -554,27 +357,9 @@ app
 																				.push($scope.depObj);
 																		console
 																				.log($scope.dependencyData);
-																		// $scope.one
-																		// =
-																		// false;
-																		// $scope.response
-																		// =
-																		// "Data
-																		// Saved
-																		// Successfully";
-																		//	
-
-																		// console.log("data
-																		// save
-																		// "+$scope.formdata);
-																		// $timeout(window.location.reload(),
-																		// 400000);
-																		// window.location.reload();
-																		// $scope.success
-																		// =
-																		// true;
-
-																	})
+																		$scope.show(formname,list,code,flag,clear);
+																		
+																																			})
 															.error(
 																	function(
 																			error) {
@@ -589,6 +374,8 @@ app
 
 							};
 
+
+							
 						} ]);
 
 app.directive("limitTo", [ function() {
@@ -633,15 +420,15 @@ app.directive('allowDecimalNumbers', function() {
 									return true;
 								} else if (event.which >= 48
 										&& event.which <= 57) {
-									// numbers  
+									// numbers
 									return true;
 								} else if (event.which >= 96
 										&& event.which <= 105) {
-									// numpad number  
+									// numpad number
 									return true;
 								} else if ([ 46, 110, 190 ]
 										.indexOf(event.which) > -1) {
-									// dot and numpad dot  
+									// dot and numpad dot
 									return true;
 								} else {
 									event.preventDefault();

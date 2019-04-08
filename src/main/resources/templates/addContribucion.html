@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+
+	<div th:fragment="addContribucion"
+		class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="two">
+							<form novalidate="" id="form5" name="form5"
+								class="ng-pristine ng-valid-pattern ng-valid-maxlength ng-invalid ng-invalid-required">
+								<h2></h2>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">CLAVE
+										DEL TIPO DE REGISTRO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-valid ng-valid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata5.clave_del_Tipo_de_Registro"
+											ng-disabled="true"
+											ng-init="formdata5.clave_del_Tipo_de_Registro=510"
+											name="clave_del_Tipo_de_Registro" type="number"
+											id="clave_del_Tipo_de_Registro" value="510" required=""
+											ng-pattern="/^[1-9][0-9]*$/" limit-to="3" maxlength="3"
+											disabled="disabled" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form5.clave_del_Tipo_de_Registro.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form5.clave_del_Tipo_de_Registro.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">NÚMERO
+										DE PEDIMENTO</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata5.númerodepedimento" ng-disabled="false"
+											name="número_de_pedimento" type="number"
+											id="número_de_pedimento" value="" required=""
+											ng-pattern="/^[9]{1}[0-9]{6}?$/" limit-to="7" maxlength="7"
+											data-tooltip-append-to-body="true"
+											data-tooltip="El primer dígito debe corresponder al último dígito del año en curso, mientras que los seis dígitos restantes son un número único de control asignado por el agente aduanal,apoderado aduanal o mandatario conservando los CEROS a la izquierda para que en conjunto sean siempre 7 dígitos. " />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6" style="color: red"
+											ng-show="form5.número_de_pedimento.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form5.número_de_pedimento.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">CLAVE
+										CONTRIBUCIÓN</label>
+									<div class="col-sm-6">
+										<select id="second-choice"
+											ng-model="formdata5.clave_Contribución" required="required"
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+											<option value="1.0">1.0</option>
+											<option value="2.0">2.0</option>
+											<option value="3.0">3.0</option>
+											<option value="4.0">4.0</option>
+											<option value="5.0">5.0</option>
+											<option value="6.0">6.0</option>
+											<option value="7.0">7.0</option>
+											<option value="9.0">9.0</option>
+											<option value="11.0">11.0</option>
+											<option value="12.0">12.0</option>
+											<option value="13.0">13.0</option>
+											<option value="14.0">14.0</option>
+											<option value="15.0">15.0</option>
+											<option value="16.0">16.0</option>
+											<option value="17.0">17.0</option>
+											<option value="18.0">18.0</option>
+											<option value="19.0">19.0</option>
+											<option value="20.0">20.0</option>
+											<option value="21.0">21.0</option>
+											<option value="50.0">50.0</option>
+											<option value=""></option>
+										</select>
+									</div>
+									<div class="col-sm-offset-8 col-sm-4"></div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">CLAVE
+										FORMA PAGO</label>
+									<div class="col-sm-6">
+										<select id="second-choice"
+											ng-model="formdata5.clave_Forma_Pago" required="required"
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+											<option value="? undefined:undefined ?"></option>
+											<option value="0">0</option>
+											<option value="2">2</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+											<option value="9">9</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+											<option value="13">13</option>
+											<option value="14">14</option>
+											<option value="15">15</option>
+											<option value="16">16</option>
+											<option value="18">18</option>
+											<option value="19">19</option>
+											<option value="20">20</option>
+											<option value="21">21</option>
+											<option value="22">22</option>
+										</select>
+									</div>
+									<div class="col-sm-offset-8 col-sm-4"></div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">IMPORTE
+										CONTRIBUCIÓN</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata5.importe_Contribución" ng-disabled="false"
+											name="importe_Contribución" type="number"
+											id="importe_Contribución" value="" required=""
+											ng-pattern="/^[1-9][0-9]*$/" limit-to="12" maxlength="12" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6" style="color: red"
+											ng-show="form5.importe_Contribución.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form5.importe_Contribución.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">TASA
+										CONTRIBUCIÓN</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata5.tasa_Contribución" ng-disabled="false"
+											name="tasa_Contribución" type="number" id="tasa_Contribución"
+											value="" required="" ng-pattern="/^\d{0,5}(\.\d{1,10})?$/"
+											limit-to="16" maxlength="16"
+											placeholder="El campo contiene hasta 5 enteros y hasta  10 fracciones." />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6" style="color: red"
+											ng-show="form5.tasa_Contribución.$error.required">This
+											Field is Required*</div>
+										<br></br>
+										<div class="col-sm-6 ng-hide" style="color: red"
+											ng-show="form5.tasa_Contribución.$error.pattern">This
+											Field cannot be null or zero</div>
+									</div>
+								</div>
+								<br></br>
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">CLAVE
+										TIPO TASA</label>
+									<div class="col-sm-6">
+										<select id="second-choice"
+											ng-model="formdata5.clave_Tipo_Tasa" required="required"
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required">
+											<option value="? undefined:undefined ?"></option>
+											<option value="1">1</option>
+											<option value="2">2</option>
+											<option value="3">3</option>
+											<option value="4">4</option>
+											<option value="5">5</option>
+											<option value="6">6</option>
+											<option value="7">7</option>
+											<option value="8">8</option>
+										</select>
+									</div>
+									<div class="col-sm-offset-8 col-sm-4"></div>
+								</div>
+								<br></br>
+
+								<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">TASA
+										CONTRIBUCIÓN</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata50.tasa_Contribución" ng-disabled="false"
+											name="tasa_Contribución" type="number"
+											id="tasa_Contribución" value="" required=""
+											ng-pattern="/^[1-9][0-9]*$/" limit-to="12" maxlength="12" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6" style="color: red"
+											ng-show="form5.tasa_Contribución.$error.required">This
+											Field is Required*</div>
+<br></br>
+<div class="col-sm-6 ng-hide" style="color:red" ng-show="form5.tasa_Contribución.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+   					<div class="form-group">
+									<label class="col-sm-2 control-label" for="keyofrecord">CLAVE TIPO TASA
+										</label>
+									<div class="col-sm-6">
+										<input
+											class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength"
+											ng-model="formdata50.clave_Tipo_Tasa" ng-disabled="false"
+											name="clave_Tipo_Tasa" type="number"
+											id="clave_Tipo_Tasa" value="" required=""
+											ng-pattern="/^[1-9][0-9]*$/" limit-to="12" maxlength="12" />
+									</div>
+									<div class="col-sm-offset-8 col-sm-4">
+										<div class="col-sm-6" style="color: red"
+											ng-show="form5.clave_Tipo_Tasa.$error.required">This
+											Field is Required*</div>
+<br></br>
+<div class="col-sm-6 ng-hide" style="color:red" ng-show="form5.clave_Tipo_Tasa.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+										<div class="form-group">
+											<div class="col-lg-offset-2 col-lg-10">
+												<button ng-disabled="isDisabled5 || form5.$invalid"
+													class="btn btn-theme"
+													ng-click="isLock5=true;$event.preventDefault();save(formdata5,5,1,'formdata5','deppedimento','510','two','true')"
+													disabled="disabled">Guardar</button>
+											</div>
+										</div>
+							</form>
+
+
+							<!-- formgroup div end -->
+
+
+
+						</div>
+	
+
+</body>
+
+</html>

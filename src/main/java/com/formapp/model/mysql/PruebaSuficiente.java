@@ -23,7 +23,7 @@ public class PruebaSuficiente extends AuditBase{
 	 private long id;
 	
 	private int clave_del_Tipo_de_Registro;
-	private long número_Pedimento;
+	private long número_de_pedimento;
 	private String país_Destino ;
 	private String número_Pedimento_EUA_CAN;
 	private int prueba_Suficiente ;
@@ -40,11 +40,12 @@ public class PruebaSuficiente extends AuditBase{
 	public void setclave_del_Tipo_de_Registro(int clave_del_Tipo_de_Registro) {
 		this.clave_del_Tipo_de_Registro = clave_del_Tipo_de_Registro;
 	}
-	public long getNúmero_Pedimento() {
-		return número_Pedimento;
+	
+	public long getNúmero_de_pedimento() {
+		return número_de_pedimento;
 	}
-	public void setNúmero_Pedimento(long número_Pedimento) {
-		this.número_Pedimento = número_Pedimento;
+	public void setNúmero_de_pedimento(long número_de_pedimento) {
+		this.número_de_pedimento = número_de_pedimento;
 	}
 	public String getPaís_Destino() {
 		return país_Destino;
@@ -75,10 +76,10 @@ public class PruebaSuficiente extends AuditBase{
 	
 	@Override
 	public String toString() {
-		return "PruebaSuficiente [id=" + id + ", clave_del_Tipo_de_Registro=" + clave_del_Tipo_de_Registro + ", número_Pedimento="
-				+ número_Pedimento + ", país_Destino=" + país_Destino + ", número_Pedimento_EUA_CAN="
-				+ número_Pedimento_EUA_CAN + ", prueba_Suficiente=" + prueba_Suficiente + ", fecha_Documento="
-				+ fecha_Documento + "]";
+		return "PruebaSuficiente [id=" + id + ", clave_del_Tipo_de_Registro=" + clave_del_Tipo_de_Registro
+				+ ", número_de_pedimento=" + número_de_pedimento + ", país_Destino=" + país_Destino
+				+ ", número_Pedimento_EUA_CAN=" + número_Pedimento_EUA_CAN + ", prueba_Suficiente=" + prueba_Suficiente
+				+ ", fecha_Documento=" + fecha_Documento + "]";
 	}
 	
 	

@@ -1,7 +1,5 @@
-	var app = angular.module('myapp', [ 'ui.bootstrap' ]);
-app.config(['$compileProvider', function ($compileProvider) {
-    $compileProvider.aHrefSanitizationWhitelist(/^\s*(|blob|):/);
-}]);
+
+var app = angular.module('myapp', [ 'ui.bootstrap' ]);
 app
 		.controller(
 				'UserController',
@@ -14,7 +12,7 @@ app
 						'$sce',
 						function($scope,$window, $timeout, $http, $compile,$filter,
 								$sce) {
-							
+							$scope.número_de_pedimento=0;
 							$scope.gensuccess = false;
 							$scope.pedimento = [];
 							$scope.one = true;
@@ -25,7 +23,7 @@ app
 							$scope.formdata1 = {};
 							$scope.formdata36 = {};
 							$scope.user = "User!";
-							$scope.formDatas = [];
+							$scope.tabDisabled = true;
 							$scope.dependencyData = [ {} ];
 							$scope.viewby = 10;
 							$scope.totalItems = 0;
@@ -43,7 +41,45 @@ app
 							    $scope.fileUrl = url.createObjectURL(blob);
 							    $scope.filename=res.filename;
 							}
-							$scope.map={};
+							$scope.map={
+									"formdata1":$scope.formdata1,
+									"formdata36":$scope.formdata36,
+									"formdata36":$scope.formdata19,
+									"formdata36":$scope.formdata4,
+									"formdata36":$scope.formdata15,
+									"formdata36":$scope.formdata16,
+									"formdata36":$scope.formdata20,
+									"formdata36":$scope.formdata7,
+									"formdata36":$scope.formdata24,
+									"formdata36":$scope.formdata8,
+									"formdata36":$scope.formdata3,
+									"formdata36":$scope.formdata14,
+									"formdata36":$scope.formdata2,
+									"formdata36":$scope.formdata9
+									
+									
+							};
+							
+							$scope.view={
+									'one':$scope.one,
+									'two':$scope.two,
+									'transporte':$scope.transporte,
+
+									'guias':$scope.guias,
+									'contenedores':$scope.contenedores,
+									'facturas':$scope.facturas,
+									'fechas':$scope.fechas,
+									'identificadores':$scope.identificadores,
+									'cuentasaduaneras':$scope.cuentasaduaneras,
+									'observaciones':$scope.observaciones,
+									'descargos':$scope.descargos,
+									'compensaciones':$scope.compensaciones,
+									'documentosPagoVirtuales':$scope.documentosPagoVirtuales,
+									
+									'candados':$scope.candados,
+									'destinatario':$scope.destinatario
+									
+							};
 						$scope.tipoPedimento = [ 'NA', 'Pedimento  Normal',
 									'Desistimiento o Eliminación',
 									'De la Industria Automotriz',
@@ -91,59 +127,101 @@ app
 
 							};
 							
-							$scope.showTransporte = function() {
+							$scope.show = function(name,list,code,flag,clear) {
 								console.log(" in showdiv function");
-								$scope.one = false;
-								$scope.two = false;
-								$scope.transporte = true;
-								$scope.formdata36={};
+								
+								
+								$scope.toggle(flag);
+								if(clear=='true'){
+								$scope[name]={};
+								$scope[name].clave_del_Tipo_de_Registro=code;
+								$scope[name].número_de_pedimento = $scope.número_de_pedimento;
+								$scope[name].número_de_Pedimento = $scope.número_de_pedimento;
+								$scope[name].número_Pedimento = $scope.número_de_pedimento;
+								$scope[name].número_pedimento = $scope[name].número_de_pedimento;
+								}
+								  $http({
+										url : '/user/getData',
+										method : 'GET',
+								params : {
+									code : code,
+									id:$scope.número_de_pedimento
+								},
+										headers : {
+											"Content-Type" : "application/json"
+										}
 
-								$http
-								.get("/user/getTransporteData")
-								.then(
-										function(response) {
-											console.log("pedimento data ",
-													response);
-											$scope.deppedimento = response.data;
-											$scope.totalItems = $scope.deppedimento.length;
-											$scope.loaded = true;
+									}).success(function(response) {
 
-										},
-										function(response) { // error
-											console
-													.log("Error: "
-															+ response.status
-															+ " : "
-															+ response.data);
-										});
-
-						
+										console.log("pedimento data ",
+												response);
+										$scope[list] = response;
+										$scope.totalItems = $scope[list].length;
+										$scope.loaded = true;
+									}).error(function(error) {
+										console
+										.log("Error: "
+												+ response.status
+												+ " : "
+												+ response.data);									});
+													
 
 							};
 							
 							
 							
-							$scope.edit = function(data) {
-								console.log(" in showdiv function"+data);
-								$scope.one = false;
-								$scope.two = true;
-								$scope.formdata1=data;
+							$scope.edit = function(data,formname,flag) {
+								
+								console.log(" in showdiv function"+$scope.map[formname].clave_del_Tipo_de_Registro);
+//								$scope.one = false;
+//								$scope.two = true;
+								$scope[formname]=data;
+								$scope.toggle(flag);
+								
+//						
+//								  $http({
+//										url : '/user/updateNumero',
+//										method : 'PUT',
+//								params : {
+//									
+//									numero:data.número_de_pedimento
+//								},
+//										headers : {
+//											"Content-Type" : "application/json"
+//										}
+//
+//									}).success(function(response) {
+//										
+//									}).error(function(error) {
+//										console
+//										.log("Error: "
+//												+ response.status
+//												+ " : "
+//												+ response.data);									});
+//
 							};
 							
-							$scope.editTransporte = function(data) {
-								console.log(" in showdiv function"+data);
-								$scope.one = false;
-								$scope.two = false;
-								$scope.transporte = false;
-								$scope.formdata36=data;
-							};
+							$scope.toggle=function(flag){
+						        angular.forEach($scope.view, function (value, key) {
+						        	if(flag==key){
+						        		$scope[key]=true
+						        	}else{
+						        		$scope[key]=false;
+
+						        	}
+						        	
+						        })
+
+							}
 							
-							$scope.delete = function(data) {
+							
+							
+							$scope.delete = function(data,list) {
 								console.log(" in showdiv function"+data);
 								
 								
-								 var index = $scope.pedimento.indexOf(data);
-								  $scope.pedimento.splice(index, 1);  
+								 var index = $scope[list].indexOf(data);
+								 $scope[list].splice(index, 1);  
 								  var json = angular.toJson(data );
 
 								  $http({
@@ -201,9 +279,8 @@ app
 							};
 							$scope.dependentReturn = function() {
 								console.log(" in showdiv function");
-								$scope.one = false;
-								$scope.two = true;
-								$scope.transporte = false;
+								console.log(" in showdiv function");
+								$scope.toggle('two');		
 							};
 
 							
@@ -229,9 +306,13 @@ app
 
 							
 							
-							$scope.save = function(itemid, formid, managerid) {
+							$scope.save = function(itemid, formid, managerid,formname,list,code,flag,clear) {
 								$scope.depObj = {};
-
+								
+								if(code=='501'){
+									$scope.número_de_pedimento=itemid.número_de_pedimento;
+								}
+								
 								$http({
 									method : "GET",
 									url : "/user/getParentFormid/",
@@ -250,13 +331,14 @@ app
 															});
 													console
 															.log(itemid.clave_formulario_principal);
+													  var json = angular.toJson(itemid );
+
 													$http(
 															{
 																url : '/user/save',
 																dataType : 'string',
 																method : 'POST',
-																data : JSON
-																		.stringify(itemid),
+																data : json,
 																params : {
 																	formid : formid,
 																	managerid : managerid
@@ -275,6 +357,8 @@ app
 																				.push($scope.depObj);
 																		console
 																				.log($scope.dependencyData);
+																		$scope.show(formname,list,code,flag,clear);
+																		
 																																			})
 															.error(
 																	function(

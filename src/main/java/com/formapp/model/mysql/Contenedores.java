@@ -16,7 +16,7 @@ public class Contenedores extends AuditBase {
 	 private long id;
 	
 	private int Clave_del_Tipo_de_Registro;
-	private long Número_de_Pedimento;
+	private long número_de_pedimento;
 	private String Número_de_Contenedor;
 	private int Tipo_de_Contenedor;
 	public Contenedores() {
@@ -33,11 +33,12 @@ public class Contenedores extends AuditBase {
 	public void setClave_del_Tipo_de_Registro(int clave_del_Tipo_de_Registro) {
 		Clave_del_Tipo_de_Registro = clave_del_Tipo_de_Registro;
 	}
-	public long getNúmero_de_Pedimento() {
-		return Número_de_Pedimento;
+	
+	public long getNúmero_de_pedimento() {
+		return número_de_pedimento;
 	}
-	public void setNúmero_de_Pedimento(long número_de_Pedimento) {
-		Número_de_Pedimento = número_de_Pedimento;
+	public void setNúmero_de_pedimento(long número_de_pedimento) {
+		this.número_de_pedimento = número_de_pedimento;
 	}
 	public String getNúmero_de_Contenedor() {
 		return Número_de_Contenedor;
@@ -55,7 +56,7 @@ public class Contenedores extends AuditBase {
 	@Override
 	public String toString() {
 		return "Contenedores [id=" + id + ", Clave_del_Tipo_de_Registro=" + Clave_del_Tipo_de_Registro
-				+ ", Número_de_Pedimento=" + Número_de_Pedimento + ", Número_de_Contenedor=" + Número_de_Contenedor
+				+ ", número_de_pedimento=" + número_de_pedimento + ", Número_de_Contenedor=" + Número_de_Contenedor
 				+ ", Tipo_de_Contenedor=" + Tipo_de_Contenedor + "]";
 	}
 

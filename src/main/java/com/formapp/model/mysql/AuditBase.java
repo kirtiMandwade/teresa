@@ -24,7 +24,7 @@ public class AuditBase {
 	@Column(columnDefinition = "TIMESTAMP  DEFAULT CURRENT_TIMESTAMP", updatable = false)
 	private Timestamp fecha_creacion;
 	@Expose
-	@Column(columnDefinition = "TIMESTAMP")
+	@Column(columnDefinition = "TIMESTAMP DEFAULT CURRENT_TIMESTAMP")
 	private Timestamp fecha_modificacion;
 	
 	@Expose
@@ -36,6 +36,7 @@ public class AuditBase {
 	@PrePersist
 	protected void onPrePersist() {
 		fecha_creacion = new Timestamp(new Date().getTime());
+		fecha_modificacion= new Timestamp(new Date().getTime());
 	}
 
 	@PreUpdate

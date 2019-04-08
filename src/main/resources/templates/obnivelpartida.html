@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head></head>
+<body>
+
+	<div th:fragment="obnivelpartida"
+		class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="obnivelpartida">
+		<div class="panel-group" id="accordion36">
+			<div>
+				<ul class="nav nav-tabs ng-scope">
+					<li ><a data-toggle="tab"
+						href="/user/pedimento.html">Generales</a></li>
+					<li></li>
+					<li class="active"><a href="/user/partidas.html">Partidas</a></li>
+					<li></li>
+					<li class=""><a data-toggle="tab" href="/user/contribuciones">Contribuciones</a></li>
+					<li></li>
+				</ul>
+				<div class="tab-content ng-scope">
+
+					<div id="tab36" class="tab-pane fade in active">
+
+						<div>
+
+							<div class="table-responsive">
+								<table id="tableId"
+									class="table table-striped table-advance table-hover">
+									<thead>
+										<tr> <th>OBSERVACIONES</th> <th>Accciones</th><th>EDIT</th>
+										<th>DELETE</th>
+										</tr>
+								
+									</thead>
+									<tbody>
+										<tr
+											ng-repeat="data in deppedimento.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter: search">
+											<td>{{data.observaciones}}</td>
+											<td>{{data.fracción_Arancelaria}}</td>
+											<td ng-click="edit(data,'formdata25','obnivelpartida')">edit</td>
+											<td ng-click="delete(data,'deppedimento')">delete</td>
+
+										</tr>
+
+									</tbody>
+								</table>
+							</div>
+							<hr></hr>
+						</div>
+
+						<div>
+		<form novalidate="" id="form25" name="form25" class="ng-pristine ng-valid-pattern ng-valid-maxlength ng-invalid ng-invalid-required">
+   <h2></h2>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">CLAVE DEL TIPO DE REGISTRO</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-valid ng-valid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata25.clave_del_Tipo_de_Registro" ng-disabled="true" ng-init="formdata25.clave_del_Tipo_de_Registro=558" name="clave_del_Tipo_de_Registro" type="number" id="clave_del_Tipo_de_Registro" value="558" required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="3" maxlength="3" disabled="disabled" /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form25.clave_del_Tipo_de_Registro.$error.required">This Field is Required*</div>
+         <br></br>
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form25.clave_del_Tipo_de_Registro.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">NÚMERO PEDIMENTO</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata25.número_de_pedimento" ng-disabled="false" name="número_de_pedimento" type="number" id="número_de_pedimento" value="" required="" ng-pattern="/^[9]{1}[0-9]{6}?$/" limit-to="7" maxlength="7" data-tooltip-append-to-body="true" data-tooltip="El primer dígito debe corresponder al último dígito del año en curso, mientras que los seis dígitos restantes son un número único de control asignado por el agente aduanal,apoderado aduanal o mandatario conservando los CEROS a la izquierda para que en conjunto sean siempre 7 dígitos. " /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6" style="color:red" ng-show="form25.número_de_pedimento.$error.required">This Field is Required*</div>
+         <br></br>
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form25.número_de_pedimento.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">FRACCIÓN ARANCELARIA</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-maxlength" required="" ng-model="formdata25.fracción_Arancelaria" ng-disabled="false" type="text" id="fracción_Arancelaria" limit-to="8" name="fracción_Arancelaria" maxlength="8" value="" /></div>
+      <div class="form-group">
+         <div class="col-sm-6"><input name="clave_formulario_principal" type="hidden" id="clave_formulario_principal" ng-model="formdata25.clave_formulario_principal" class="ng-pristine ng-untouched ng-valid" /></div>
+      </div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div style="color:red" ng-show="form25.fracción_Arancelaria.$error.required">This Field is Required*</div>
+         <br></br>
+         <div style="color:red" ng-show="form25.fracción_Arancelaria.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">NÚMERO PARTIDA</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata25.número_Partida" ng-disabled="false" name="número_Partida" type="number" id="número_Partida" value="" required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="5" maxlength="5" /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6" style="color:red" ng-show="form25.número_Partida.$error.required">This Field is Required*</div>
+         <br></br>
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form25.número_Partida.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">SECUENCIA OBSERVACIONES</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" ng-model="formdata25.secuencia_Observaciones" ng-disabled="false" name="secuencia_Observaciones" type="number" id="secuencia_Observaciones" value="" required="" ng-pattern="/^[1-9][0-9]*$/" limit-to="3" maxlength="3" /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div class="col-sm-6" style="color:red" ng-show="form25.secuencia_Observaciones.$error.required">This Field is Required*</div>
+         <br></br>
+         <div class="col-sm-6 ng-hide" style="color:red" ng-show="form25.secuencia_Observaciones.$error.pattern">This Field cannot be null or zero</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+      <label class="col-sm-2 control-label" for="keyofrecord">OBSERVACIONES</label>
+      <div class="col-sm-6"><input class="form-control ng-pristine ng-untouched ng-invalid ng-invalid-required ng-valid-pattern ng-valid-maxlength" required="" ng-model="formdata25.observaciones" ng-disabled="false" type="text" id="observaciones" limit-to="120" name="observaciones" maxlength="120" value="" ng-pattern="/^[^-_;*']+$/" /></div>
+      <div class="col-sm-offset-8 col-sm-4">
+         <div style="color:red" ng-show="form25.observaciones.$error.required">This Field is Required*</div>
+         <br></br>
+         <div style="color:red" ng-show="form25.observaciones.$error.pattern" class="ng-hide">This Field cannot be null or zero*</div>
+      </div>
+   </div>
+   <br></br>
+   <div class="form-group">
+									<div class="col-lg-offset-2 col-lg-10">
+										<button ng-disabled="isDisabled25 || form25.$invalid"
+											class="btn btn-theme"
+											ng-click="isLock25=true;$event.preventDefault();save(formdata25,25,1,'formdata25','deppedimento','558','obnivelpartida','true')"
+											disabled="disabled">Guardar</button>
+							<button class="btn btn-theme buttonclass" ng-click="dependentReturn()">
+											Return
+												back
+										</button>
+									</div>
+								</div>
+</form>
+							<!-- formgroup div end -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

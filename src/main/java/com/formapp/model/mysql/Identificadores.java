@@ -16,7 +16,7 @@ public class Identificadores extends AuditBase{
 	 private int id;
 	
 		private int clave_del_Tipo_de_Registro ;
-		private long Número_Pedimento;
+		private long número_de_pedimento;
 		private String Clave_Identificador; 
 		
 		private String Complemento1 ;
@@ -24,32 +24,23 @@ public class Identificadores extends AuditBase{
 		private String Complemento2 ;
 		@Column(length=40)
 		private String Complemento3 ;
-		
-		
-		
-		public Identificadores() {
-			
-		}
-		
 		public int getId() {
 			return id;
 		}
-
 		public void setId(int id) {
 			this.id = id;
 		}
-
-		public int getclave_del_Tipo_de_Registro() {
+		public int getClave_del_Tipo_de_Registro() {
 			return clave_del_Tipo_de_Registro;
 		}
-		public void setclave_del_Tipo_de_Registro(int clave_del_Tipo_de_Registro) {
-			clave_del_Tipo_de_Registro = clave_del_Tipo_de_Registro;
+		public void setClave_del_Tipo_de_Registro(int clave_del_Tipo_de_Registro) {
+			this.clave_del_Tipo_de_Registro = clave_del_Tipo_de_Registro;
 		}
-		public long getNúmero_Pedimento() {
-			return Número_Pedimento;
+		public long getNúmero_de_pedimento() {
+			return número_de_pedimento;
 		}
-		public void setNúmero_Pedimento(long número_Pedimento) {
-			Número_Pedimento = número_Pedimento;
+		public void setNúmero_de_pedimento(long número_de_pedimento) {
+			this.número_de_pedimento = número_de_pedimento;
 		}
 		public String getClave_Identificador() {
 			return Clave_Identificador;
@@ -75,14 +66,13 @@ public class Identificadores extends AuditBase{
 		public void setComplemento3(String complemento3) {
 			Complemento3 = complemento3;
 		}
-	
 		@Override
 		public String toString() {
-			return "Identificadores [id=" + id + ", clave_del_Tipo_de_Registro=" + clave_del_Tipo_de_Registro + ", Número_Pedimento="
-					+ Número_Pedimento + ", Clave_Identificador=" + Clave_Identificador + ", Complemento1="
-					+ Complemento1 + ", Complemento2=" + Complemento2 + ", Complemento3=" + Complemento3 + "]";
+			return "Identificadores [id=" + id + ", clave_del_Tipo_de_Registro=" + clave_del_Tipo_de_Registro
+					+ ", número_de_pedimento=" + número_de_pedimento + ", Clave_Identificador=" + Clave_Identificador
+					+ ", Complemento1=" + Complemento1 + ", Complemento2=" + Complemento2 + ", Complemento3="
+					+ Complemento3 + "]";
 		}
-		
-		
+	
 
 }

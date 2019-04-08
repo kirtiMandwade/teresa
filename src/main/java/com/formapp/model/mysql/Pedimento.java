@@ -15,7 +15,7 @@ public class Pedimento extends AuditBase {
 	 private int Clave_del_Tipo_de_Registro;
 	 private int Tipo_de_Movimiento;
 	 private int Patente_o_autorización; 
-	 private long Número_de_Pedimento;
+	 private long número_de_pedimento;
 	 private String Aduana_Sección_de_Despacho;
 	 private String Acuse_Electrónico_de_Validación;
 	 private int tipo_de_Pedimento	 ;
@@ -54,12 +54,14 @@ public class Pedimento extends AuditBase {
 		Patente_o_autorización = patente_o_autorización;
 	}
 
-	public long getNúmero_de_Pedimento() {
-		return Número_de_Pedimento;
+	
+
+	public long getNúmero_de_pedimento() {
+		return número_de_pedimento;
 	}
 
-	public void setNúmero_de_Pedimento(long número_de_Pedimento) {
-		Número_de_Pedimento = número_de_Pedimento;
+	public void setNúmero_de_pedimento(long número_de_pedimento) {
+		this.número_de_pedimento = número_de_pedimento;
 	}
 
 	public String getAduana_Sección_de_Despacho() {
@@ -90,7 +92,7 @@ public class Pedimento extends AuditBase {
 	public String toString() {
 		return "Pedimento [id=" + id + ", Clave_del_Tipo_de_Registro=" + Clave_del_Tipo_de_Registro
 				+ ", Tipo_de_Movimiento=" + Tipo_de_Movimiento + ", Patente_o_autorización=" + Patente_o_autorización
-				+ ", Número_de_Pedimento=" + Número_de_Pedimento + ", Aduana_Sección_de_Despacho="
+				+ ", número_de_pedimento=" + número_de_pedimento + ", Aduana_Sección_de_Despacho="
 				+ Aduana_Sección_de_Despacho + ", Acuse_Electrónico_de_Validación=" + Acuse_Electrónico_de_Validación
 				+ ", tipo_de_Pedimento=" + tipo_de_Pedimento + "]";
 	}

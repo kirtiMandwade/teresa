@@ -16,7 +16,7 @@ public class DiferenciasContribuciones  extends AuditBase{
 	
 	private int clave_del_Tipo_de_Registro;
 	private int clave_Contribución ;
-	private long número_Pedimento;
+	private long número_de_pedimento;
 	private int clave_forma_pago  ;
 	private long importe_Pago ;
 	
@@ -45,11 +45,12 @@ public class DiferenciasContribuciones  extends AuditBase{
 	public void setClave_Contribución(int clave_Contribución) {
 		this.clave_Contribución = clave_Contribución;
 	}
-	public long getNúmero_Pedimento() {
-		return número_Pedimento;
+	
+	public long getNúmero_de_pedimento() {
+		return número_de_pedimento;
 	}
-	public void setNúmero_Pedimento(long número_Pedimento) {
-		this.número_Pedimento = número_Pedimento;
+	public void setNúmero_de_pedimento(long número_de_pedimento) {
+		this.número_de_pedimento = número_de_pedimento;
 	}
 	public int getClave_forma_pago() {
 		return clave_forma_pago;
@@ -66,7 +67,7 @@ public class DiferenciasContribuciones  extends AuditBase{
 	@Override
 	public String toString() {
 		return "DiferenciasContribuciones [id=" + id + ", clave_del_Tipo_de_Registro=" + clave_del_Tipo_de_Registro
-				+ ", clave_Contribución=" + clave_Contribución + ", número_Pedimento=" + número_Pedimento
+				+ ", clave_Contribución=" + clave_Contribución + ", número_de_pedimento=" + número_de_pedimento
 				+ ", clave_forma_pago=" + clave_forma_pago + ", importe_Pago=" + importe_Pago + "]";
 	}
 	

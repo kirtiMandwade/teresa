@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="" />
+<meta name="author" content="Dashboard" />
+<meta name="keyword"
+	content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina" />
+<!-- <meta charset="ISO-8859-1"/> -->
+<!--   	<meta charset="utf-8"/>
+ -->
+
+<title>Form Management Application</title>
+
+<!-- Favicons -->
+<!--  <link href="/img/favicon.png" rel="icon"/>
+  <link href="/img/apple-touch-icon.png" rel="apple-touch-icon"/>  -->
+
+<link href="/img/favicon.png" rel="icon" />
+<link href="/img/apple-touch-icon.png" rel="apple-touch-icon" />
+<!--   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/> -->
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<!--  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<!-- Bootstrap core CSS -->
+<!--  <link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet"/> -->
+<link href="/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+<!--external css-->
+<!--  <script th:src="@{../js/angular.js}"></script>  -->
+
+<script src="/js/angular.js"></script>
+<!-- 
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="https://code.angularjs.org/1.4.5/angular-route.js"></script> -->
+<!--  <script th:src="@{../js/UserMenu.js}"></script> 
+  
+  <link href="/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+  <link rel="stylesheet" type="text/css" href="/css/zabuto_calendar.css"/>
+  <link rel="stylesheet" type="text/css" href="/lib/gritter/css/jquery.gritter.css" />
+
+  <link href="/css/style.css" rel="stylesheet"/>
+  <link href="/css/style-responsive.css" rel="stylesheet"/>
+  <script src="/lib/chart-master/Chart.js"></script> -->
+
+
+<!-- <script th:src="@{../js/UserMenuTest.js}"></script> -->
+<script src="/js/contribuciones.js"></script>
+<link href="/lib/font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link rel="stylesheet" type="text/css" href="/css/zabuto_calendar.css" />
+<link rel="stylesheet" type="text/css"
+	href="/lib/gritter/css/jquery.gritter.css" />
+<link href="/css/style.css" rel="stylesheet" />
+<link href="/css/style-responsive.css" rel="stylesheet" />
+<script src="/lib/chart-master/Chart.js"></script>
+-
+
+
+</head>
+
+
+<body ng-app="myapp" ng-controller="UserController">
+	<section id="container">
+		<!-- **********************************************************************************************************************************************************
+        TOP BAR CONTENT & NOTIFICATIONS
+        *********************************************************************************************************************************************************** -->
+		<!--header start-->
+		<header class="header black-bg">
+			<div class="sidebar-toggle-box">
+				<div class="fa fa-bars tooltips" data-placement="right"
+					data-original-title="Toggle Navigation"></div>
+			</div>
+			<!--logo start-->
+			<a href="/user/home" class="logo"><b>Form<span>App</span></b></a>
+			<!--logo end-->
+			<div class="nav notify-row" id="top_menu">
+				<!--  notification start -->
+
+				<!--  notification end -->
+			</div>
+			<div class="top-menu">
+				<ul class="nav pull-right top-menu">
+					<li><a th:href="@{/logout}" class="logout">Logout</a></li>
+				</ul>
+			</div>
+		</header>
+		<!--header end-->
+		<!-- **********************************************************************************************************************************************************
+        MAIN SIDEBAR MENU
+        *********************************************************************************************************************************************************** -->
+		<!--sidebar start-->
+		<aside>
+			<div id="sidebar" class="nav-collapse ">
+				<!-- sidebar menu start-->
+				<ul class="sidebar-menu" id="nav-accordion">
+					<!--  <p class="centered"><a href="profile.html"><img src="img/ui-sam.jpg" class="img-circle" width="80"/></a></p>
+          <h5 class="centered">Sam Soffes</h5> -->
+					<!--  <li class="mt ng-scope"><a href="/user/mfile.html"><span>Generación de Arhivo "m"</span></a></li> -->
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Generación
+								de Arhivo "m"</span></a></li>
+					<li class="mt ng-scope"><a href="/user/pedimento.html"><span>Pediment Normal</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Desistimiento o Eliminación</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>De la Industria Automotriz</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Pedimento Complementario</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Previo de Consolidado</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Global Complementario</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Tránsitos</span></a></li>
+					
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Despacho Anticipado</span></a></li>
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Rectificaciones</span></a></li>
+						
+					<li class="mt ng-scope"><a href="/user/mfile.html"><span>Confirmación de Pago</span></a></li>
+						
+						
+						
+						
+				</ul>
+				<!-- sidebar menu end-->
+			</div>
+		</aside>
+		<!--sidebar end-->
+		<!-- ****************************************************	******************************************************************************************************
+        MAIN CONTENT
+        *********************************************************************************************************************************************************** -->
+		<!--main content start-->
+		<section id="main-content">
+			<section class="wrapper">
+				<div class="row mt">
+					<!-- <div class="col-lg-12" ng-show="one">
+            <h4><i class="fa fa-angle-right"></i>{{currentForm.name}}</h4>
+            <div class="form-panel">
+              <form role="form" class="form-horizontal">
+               <div class="form-group" id="userform">
+                 
+                 
+                </div>
+                </form>
+              </div>
+             </div> -->
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" ng-show="one">
+			
+						<div class="panel-group" id="accordion">
+							<div id="userform">
+							
+							<ul class="nav nav-tabs ng-scope">
+									<li class=""><a data-toggle="tab"
+										href="/user/pedimento.html">Generales</a></li>
+									<li></li>
+									<li class=""><a data-toggle="tab" href="/user/partidas.html">Partidas</a></li>
+									<li></li>
+									<li class="active"><a data-toggle="tab"
+										href="/user/contribuciones.html">Contribuciones</a></li>
+									<li></li>
+								</ul>
+																<div class="tab-content ng-scope">
+																	<div id="tab2" class="tab-pane fade  in active">
+								
+								<div class="panel panel-default">
+									<!-- Default panel contents -->
+									<div class="panel-body">
+								
+										<div class="table-responsive">
+										<input class="form-control ng-pristine ng-untouched ng-valid"
+									type="text" ng-model="search" placeholder="Search..."/>
+											<table class="table table-striped table-advance table-hover">
+														<thead>
+															<tr>
+																<th>CLAVE CONTRIBUCIÓN</th>
+																<th>CLAVE FORMA PAGO</th>
+																<th>IMPORTE CONTRIBUCIÓN</th>
+																<th>TASA CONTRIBUCIÓN</th>
+																<th>CLAVE TIPO TASA</th>
+																<th>EDIT</th>
+																<th>DELETE</th>
+															</tr>
+
+														</thead>
+														<tbody>
+													<tr
+														ng-repeat="data in deppedimento.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | filter: search">
+											
+											<td>{{ data.clave_Contribución }}</td>
+											<td>{{data.clave_Forma_Pago }}</td>
+											<td>{{ data.importe_Contribución }}</td>
+											<td>{{ data.tasa_Contribución }}</td>
+											<td>{{ data.clave_Tipo_Tasa }}</td>
+
+											<td ng-click="edit(data,'formdata5','two')">edit</td>
+											<td ng-click="delete(data,'pedimento')">delete</td>
+
+													</tr>
+												</tbody>
+											</table>
+	View <select ng-model="viewby"
+									ng-change="setItemsPerPage(viewby)">
+									<option>3</option>
+									<option>5</option>
+									<option>10</option>
+									<option>20</option>
+									<option>30</option>
+									<option>40</option>
+									<option>50</option>
+								</select> records at a time.
+
+								<pagination total-items="totalItems" ng-model="currentPage"
+									ng-change="pageChanged()" class="pagination-sm"
+									items-per-page="itemsPerPage"></pagination>
+								<hr />
+
+										</div>
+									</div>
+								</div>
+</div></div>
+							</div>
+
+
+						</div>
+
+
+					</div>
+
+								<div th:replace="addContribucion :: addContribucion"> </div>
+
+								<div th:replace="showContribucion :: showContribucion"> </div>
+
+								<div th:replace="addContribucionPartida :: addContribucionPartida"> </div>
+								
+</div>
+				<!-- /row -->
+								
+			</section>
+		</section>
+
+	</section>
+	<!-- js placed at the end of the document so the pages load faster -->
+	<!--  <script src="/lib/jquery/jquery.min.js"></script>
+
+  <script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+  <script class="include" type="text/javascript" src="/lib/jquery.dcjqaccordion.2.7.js"></script>
+  <script src="/lib/jquery.scrollTo.min.js"></script>
+  <script src="/lib/jquery.nicescroll.js" type="text/javascript"></script>
+  <script src="/lib/jquery.sparkline.js"></script>
+  <script src="/lib/common-scripts.js"></script>
+  <script type="text/javascript" src="/lib/gritter/js/jquery.gritter.js"></script>
+  <script type="text/javascript" src="/lib/gritter-conf.js"></script>
+
+  <script src="/lib/sparkline-chart.js"></script>
+  <script src="/lib/zabuto_calendar.js"></script>
+  <script src="https://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script> 
+  -->
+	<script
+		src="https://angular-ui.github.com/bootstrap/ui-bootstrap-tpls-0.12.0.js"></script>
+	<script src="/lib/jquery/jquery.min.js"></script>
+
+	<script src="/lib/bootstrap/js/bootstrap.min.js"></script>
+	<script class="include" type="text/javascript"
+		src="/lib/jquery.dcjqaccordion.2.7.js"></script>
+	<script src="/lib/jquery.scrollTo.min.js"></script>
+	<script src="/lib/jquery.nicescroll.js" type="text/javascript"></script>
+	<script src="/lib/jquery.sparkline.js"></script>
+
+	<script src="/lib/common-scripts.js"></script>
+	<script type="text/javascript" src="/lib/gritter/js/jquery.gritter.js"></script>
+	<script type="text/javascript" src="/lib/gritter-conf.js"></script>
+
+	<script src="/lib/sparkline-chart.js"></script>
+	<script src="/lib/zabuto_calendar.js"></script>
+	<script type="text/javascript">
+    $(document).ready(function() {
+      var unique_id = $.gritter.add({
+        // (string | mandatory) the heading of the notification
+        title: 'Welcome to Dashio!',
+        // (string | mandatory) the text inside the notification
+        text: '',
+        // (string | optional) the image to display on the left
+        image: 'img/ui-sam.jpg',
+        // (bool | optional) if you want it to fade out on its own or just sit there
+        sticky: false,
+        // (int | optional) the time you want it to be alive for before fading out
+        time: 8000,
+        // (string | optional) the class name you want to apply to that specific message
+        class_name: 'my-sticky-class'
+      });
+
+      return false;
+    });
+  </script>
+	<script type="application/javascript">
+    $(document).ready(function() {
+      $("#date-popover").popover({
+        html: true,
+        trigger: "manual"
+      });
+   /*    $('#tableId').DataTable();
+ */      $("#date-popover").hide();
+      $("#date-popover").click(function(e) {
+        $(this).hide();
+      });
+
+      $("#my-calendar").zabuto_calendar({
+        action: function() {
+          return myDateFunction(this.id, false);
+        },
+        action_nav: function() {
+          return myNavFunction(this.id);
+        },
+        ajax: {
+          url: "show_data.php?action=1",
+          modal: true
+        },
+        legend: [{
+            type: "text",
+            label: "Special event",
+            badge: "00"
+          },
+          {
+            type: "block",
+            label: "Regular event",
+          }
+        ]
+      });
+    });
+
+    function myNavFunction(id) {
+      $("#date-popover").hide();
+      var nav = $("#" + id).data("navigation");
+      var to = $("#" + id).data("to");
+      console.log('nav ' + nav + ' to: ' + to.month + '/' + to.year);
+    }
+  </script>
+</body>
+
+</html>

@@ -1,5 +1,6 @@
 package com.formapp.model.mysql;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,8 @@ public class ContribucionesNivelPartida extends AuditBase {
 	 private long id;
 	
 	private int clave_del_Tipo_de_Registro; 
-	private long número_pedimento; 
+	@Column(name = "número_de_Pedimento")
+	private long númerodepedimento;
 	private String fracción_Arancelaria  ;
 	private int número_Partida;
 	
@@ -24,7 +26,12 @@ public class ContribucionesNivelPartida extends AuditBase {
 
 	private long importe_Contribución  ;
 
-	public ContribucionesNivelPartida() {
+	@Override
+	public String toString() {
+		return "ContribucionesNivelPartida [id=" + id + ", clave_del_Tipo_de_Registro=" + clave_del_Tipo_de_Registro
+				+ ", númerodepedimento=" + númerodepedimento + ", fracción_Arancelaria=" + fracción_Arancelaria
+				+ ", número_Partida=" + número_Partida + ", clave_Contribución_pagar=" + clave_Contribución_pagar
+				+ ", forma_pago=" + forma_pago + ", importe_Contribución=" + importe_Contribución + "]";
 	}
 
 	public long getId() {
@@ -35,14 +42,20 @@ public class ContribucionesNivelPartida extends AuditBase {
 		this.id = id;
 	}
 
-	
-
-	public long getNúmero_pedimento() {
-		return número_pedimento;
+	public int getClave_del_Tipo_de_Registro() {
+		return clave_del_Tipo_de_Registro;
 	}
 
-	public void setNúmero_pedimento(long número_pedimento) {
-		this.número_pedimento = número_pedimento;
+	public void setClave_del_Tipo_de_Registro(int clave_del_Tipo_de_Registro) {
+		this.clave_del_Tipo_de_Registro = clave_del_Tipo_de_Registro;
+	}
+
+	public long getNúmerodepedimento() {
+		return númerodepedimento;
+	}
+
+	public void setNúmerodepedimento(long númerodepedimento) {
+		this.númerodepedimento = númerodepedimento;
 	}
 
 	public String getFracción_Arancelaria() {
@@ -84,26 +97,5 @@ public class ContribucionesNivelPartida extends AuditBase {
 	public void setImporte_Contribución(long importe_Contribución) {
 		this.importe_Contribución = importe_Contribución;
 	}
-	
-
-	public int getClave_del_Tipo_de_Registro() {
-		return clave_del_Tipo_de_Registro;
-	}
-
-	public void setClave_del_Tipo_de_Registro(int clave_del_Tipo_de_Registro) {
-		this.clave_del_Tipo_de_Registro = clave_del_Tipo_de_Registro;
-	}
-
-	@Override
-	public String toString() {
-		return "ContribucionesNivelPartida [id=" + id + ", clave_del_Tipo_de_Registro=" + clave_del_Tipo_de_Registro
-				+ ", número_pedimento=" + número_pedimento + ", fracción_Arancelaria=" + fracción_Arancelaria
-				+ ", número_Partida=" + número_Partida + ", clave_Contribución_pagar=" + clave_Contribución_pagar
-				+ ", forma_pago=" + forma_pago + ", importe_Contribución=" + importe_Contribución + "]";
-	}
-
-	
-	
-
 
 }
